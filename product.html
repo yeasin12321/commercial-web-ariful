@@ -209,7 +209,7 @@
                     <ul class="support-list">
                         <li><a href="tel:+8801324214516"><i class="fas fa-phone"></i> +8801324214516</a></li>
                         <li class="small-text">WhatsApp Only</li>
-                        <li><a href="mailto:your@email.com"><i class="fas fa-envelope"></i> your@email.com</a></li>
+                        <li><a href="jiniskinibd@gmail.com"><i class="fas fa-envelope"></i> your@email.com</a></li>
                         <li><a href="#"><i class="fab fa-whatsapp"></i> WhatsApp Chat</a></li>
                     </ul>
                 </div>
@@ -408,7 +408,7 @@
         // ═════ Payment Modal & EmailJS Logic ═════
 
         // EmailJS Public Key
-        emailjs.init("YOUR_PUBLIC_KEY"); 
+        emailjs.init("xyGU_hGF0OjRWwSZ9"); 
 
         function openPaymentModal(productName) {
             const currentPriceText = document.getElementById('totalPrice').innerText;
@@ -443,7 +443,7 @@
                 trx_id: document.getElementById('trxId').value
             };
 
-            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+            emailjs.send('service_zqxdbao', 'template_8e6jbe7', templateParams)
                 .then(function(response) {
                     alert('Payment details submitted successfully! We will verify and process your order soon.');
                     closePaymentModal();
