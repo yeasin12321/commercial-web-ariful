@@ -43,7 +43,12 @@
 
 body {
     font-family: var(--font);
-    background: var(--bg-primary);
+    background-color: #050505;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 50px 50px;
+    background-position: center top;
     color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
@@ -211,13 +216,15 @@ img { max-width: 100%; height: auto; }
 .hero::before {
     content: '';
     position: absolute;
-    top: -50%;
+    top: -30%;
     left: 50%;
     transform: translateX(-50%);
-    width: 800px;
+    width: 100vw;
+    max-width: 1200px;
     height: 800px;
-    background: radial-gradient(circle, rgba(124, 58, 237, 0.08), transparent 70%);
+    background: radial-gradient(circle, rgba(255, 42, 95, 0.12), transparent 70%);
     pointer-events: none;
+    z-index: -1;
 }
 
 .hero-badge {
