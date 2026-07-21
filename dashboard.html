@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account — YourBrand</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 24px;
+        }
+        @media (max-width:768px) { .dashboard-grid { grid-template-columns: 1fr; } }
+        .sidebar-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 32px;
+            text-align: center;
+        }
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--gradient-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 32px;
+            color: white;
+            font-weight: 700;
+        }
+        .sidebar-card h3 { font-size: 18px; font-weight: 700; }
+        .sidebar-card .email { font-size: 14px; color: var(--text-muted); margin-bottom: 20px; }
+        .sidebar-links { text-align: left; }
+        .sidebar-links a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: var(--radius-xs);
+            color: var(--text-secondary);
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        .sidebar-links a:hover,
+        .sidebar-links a.active {
+            background: rgba(124,58,237,0.1);
+            color: var(--accent-primary);
+        }
+        .sidebar-links a i { width: 18px; }
+        .order-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 20px 24px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .order-card .order-product { font-weight: 600; }
+        .order-card .order-status {
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .order-status.active { background: rgba(34,197,94,0.1); color: var(--success); }
+        .order-status.pending { background: rgba(245,158,11,0.1); color: #f59e0b; }
+        .order-status.expired { background: rgba(239,68,68,0.1); color: #ef4444; }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <svg width="180" height="45" viewBox="0 0 180 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="180" height="45" rx="8" fill="url(#logo-grad)"/>
+                    <text x="16" y="30" font-family="Inter" font-weight="800" font-size="20" fill="white">YourBrand</text>
+                    <text x="116" y="16" font-family="Inter" font-weight="600" font-size="7" fill="#a78bfa">PREMIUM</text>
+                    <text x="116" y="30" font-family="Inter" font-weight="400" font-size="9" fill="#94a3b8">SUBSCRIPTIONS</text>
+                    <defs><linearGradient id="logo-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#4f46e5"/></linearGradient></defs>
+                </svg>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <a href="blog.html">Blog</a>
+                <a href="support.html">Help & Support</a>
+            </div>
+            <div class="nav-right">
+                <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
+                <button class="lang-toggle">EN</button>
+                <a href="login.html" class="btn-login"><i class="fas fa-user"></i> My Account</a>
+                <div class="hamburger" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></div>
+            </div>
+        </div>
+    </nav>
+
+    <section style="padding:120px 0 60px">
+        <div class="container">
+            <div class="dashboard-grid">
+                <div class="sidebar-card">
+                    <div class="avatar">JD</div>
+                    <h3>John Doe</h3>
+                    <p class="email">john@email.com</p>
+                    <div class="sidebar-links">
+                        <a href="#" class="active"><i class="fas fa-shopping-bag"></i> My Orders</a>
+                        <a href="#"><i class="fas fa-user"></i> Profile</a>
+                        <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                        <a href="support.html"><i class="fas fa-headset"></i> Support</a>
+                        <a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+                <div>
+                    <h2 style="font-size:24px;font-weight:800;margin-bottom:24px">My Orders</h2>
+                    <div class="order-card">
+                        <div>
+                            <div class="order-product">Adobe Creative Cloud Pro Individual</div>
+                            <div style="font-size:13px;color:var(--text-muted)">Order #ORD-2026-001 · Placed Mar 15, 2026</div>
+                        </div>
+                        <span class="order-status active"><i class="fas fa-check-circle"></i> Active</span>
+                    </div>
+                    <div class="order-card">
+                        <div>
+                            <div class="order-product">ChatGPT Plus Subscription</div>
+                            <div style="font-size:13px;color:var(--text-muted)">Order #ORD-2026-002 · Placed Feb 10, 2026</div>
+                        </div>
+                        <span class="order-status expired"><i class="fas fa-times-circle"></i> Expired</span>
+                    </div>
+                    <div class="order-card">
+                        <div>
+                            <div class="order-product">Netflix Premium Subscription</div>
+                            <div style="font-size:13px;color:var(--text-muted)">Order #ORD-2026-003 · Placed Jan 5, 2026</div>
+                        </div>
+                        <span class="order-status pending"><i class="fas fa-clock"></i> Pending</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            document.querySelector('.theme-toggle i').classList.toggle('fa-moon');
+            document.querySelector('.theme-toggle i').classList.toggle('fa-sun');
+        }
+        function toggleMobileMenu() {
+            document.querySelector('.nav-links').classList.toggle('open');
+            document.querySelector('.nav-right').classList.toggle('open');
+        }
+    </script>
+</body>
+</html>

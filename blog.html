@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — YourBrand</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <svg width="180" height="45" viewBox="0 0 180 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="180" height="45" rx="8" fill="url(#logo-grad)"/>
+                    <text x="16" y="30" font-family="Inter" font-weight="800" font-size="20" fill="white">YourBrand</text>
+                    <text x="116" y="16" font-family="Inter" font-weight="600" font-size="7" fill="#a78bfa">PREMIUM</text>
+                    <text x="116" y="30" font-family="Inter" font-weight="400" font-size="9" fill="#94a3b8">SUBSCRIPTIONS</text>
+                    <defs><linearGradient id="logo-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#4f46e5"/></linearGradient></defs>
+                </svg>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <a href="blog.html" class="active">Blog</a>
+                <a href="support.html">Help & Support</a>
+                <div class="nav-dropdown">
+                    <button class="dropbtn">Categories <i class="fas fa-chevron-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="products.html?cat=adobe">Adobe</a>
+                        <a href="products.html?cat=ai">AI Tools</a>
+                        <a href="products.html?cat=creative">Creative & Design</a>
+                        <a href="products.html?cat=video">Video & Editing</a>
+                        <a href="products.html?cat=microsoft">Microsoft</a>
+                        <a href="products.html?cat=vpn">VPN & Security</a>
+                        <a href="products.html?cat=streaming">Streaming & Entertainment</a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-right">
+                <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
+                <button class="lang-toggle">EN</button>
+                <a href="login.html" class="btn-login"><i class="fas fa-user"></i> Login</a>
+                <div class="hamburger" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <span class="current">Blog</span>
+            </div>
+            <h1>Blog</h1>
+            <p>Guides, tips, and updates about digital subscriptions</p>
+        </div>
+    </section>
+
+    <section class="featured-products" style="padding-top:40px;">
+        <div class="container">
+            <div class="filter-bar" id="blogFilter" style="justify-content:flex-start;">
+                <button class="filter-btn active" onclick="filterBlog('all')">All</button>
+                <button class="filter-btn" onclick="filterBlog('guides')">Guides & Tutorials</button>
+                <button class="filter-btn" onclick="filterBlog('news')">News & Updates</button>
+                <button class="filter-btn" onclick="filterBlog('tips')">Software Tips</button>
+            </div>
+
+            <div id="blogGrid" class="blog-grid"></div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <svg width="180" height="45" viewBox="0 0 180 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="180" height="45" rx="8" fill="url(#logo-grad2)"/>
+                        <text x="16" y="30" font-family="Inter" font-weight="800" font-size="20" fill="white">YourBrand</text>
+                        <text x="116" y="16" font-family="Inter" font-weight="600" font-size="7" fill="#a78bfa">PREMIUM</text>
+                        <text x="116" y="30" font-family="Inter" font-weight="400" font-size="9" fill="#94a3b8">SUBSCRIPTIONS</text>
+                        <defs><linearGradient id="logo-grad2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#4f46e5"/></linearGradient></defs>
+                    </svg>
+                    <p>Your trusted destination for premium software, AI tools and digital subscriptions.</p>
+                    <p class="footer-address"><i class="fas fa-location-dot"></i> Your City, Bangladesh</p>
+                    <p class="footer-tagline">Trusted by 10,000+ customers Since 2024</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="products.html">All Products</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="support.html">Help & Support</a></li>
+                        <li><a href="dashboard.html">My Account</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="refund.html">Refund Policy</a></li>
+                        <li><a href="privacy.html#terms">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul class="support-list">
+                        <li><a href="tel:+8801234567890"><i class="fas fa-phone"></i> +8801234567890</a></li>
+                        <li class="small-text">WhatsApp Message Only</li>
+                        <li><a href="mailto:your@email.com"><i class="fas fa-envelope"></i> your@email.com</a></li>
+                        <li><a href="#"><i class="fab fa-whatsapp"></i> WhatsApp Chat</a></li>
+                        <li class="small-text">Sat – Thu · 10am – 10pm</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="payment-methods">
+                    <p>We Accept</p>
+                    <div class="payment-icons">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <span class="payment-local">bKash</span>
+                        <span class="payment-local">Nagad</span>
+                        <span class="payment-local">Rocket</span>
+                    </div>
+                </div>
+                <p class="copyright">&copy; 2026 YourBrand. All rights reserved</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            const icon = document.querySelector('.theme-toggle i');
+            icon.classList.toggle('fa-moon');
+            icon.classList.toggle('fa-sun');
+        }
+        function toggleMobileMenu() {
+            document.querySelector('.nav-links').classList.toggle('open');
+            document.querySelector('.nav-right').classList.toggle('open');
+        }
+        window.addEventListener('scroll', () => {
+            document.getElementById('backToTop').style.display = window.scrollY > 300 ? 'flex' : 'none';
+        });
+
+        const blogPosts = [
+            {
+                id: 1, category: "guides", catName: "Guides & Tutorials",
+                title: "Adobe Individual vs Enterprise Team Plan — কোনটা আপনার জন্য Best?",
+                excerpt: "Adobe Creative Cloud subscription নেওয়ার আগে সবচেয়ে বড় confusion থাকে — 👉 Individual Plan নেবেন, না Enterprise (Team) Plan?",
+                date: "Mar 30, 2026", featured: true
+            },
+            {
+                id: 2, category: "guides", catName: "Guides & Tutorials",
+                title: "How to Get Adobe Creative Cloud at the Lowest Price in Bangladesh",
+                excerpt: "Adobe Creative Cloud use করতে চান কিন্তু official price দেখে ভয় পাচ্ছেন? এই blog-এ আমরা দেখাবো কিভাবে safe ভাবে, lowest price-এ Adobe CC পাবেন...",
+                date: "Mar 30, 2026"
+            },
+            {
+                id: 3, category: "tips", catName: "Software Tips",
+                title: "Adobe Cracked vs Paid Subscription — কোনটা Safe?",
+                excerpt: "অনেকেই ভাবেন — Cracked Adobe use করলেই তো free! কিন্তু আসল সত্যটা একটু ভিন্ন...",
+                date: "Mar 30, 2026"
+            },
+            {
+                id: 4, category: "news", catName: "News & Updates",
+                title: "New Pricing Update — Best Deals This Month",
+                excerpt: "আমরা আমাদের সবচেয়ে জনপ্রিয় সাবস্ক্রিপশনের প্রাইস আপডেট করেছি। দেখে নিন নতুন প্রাইস এবং অফারগুলো...",
+                date: "Mar 28, 2026"
+            },
+            {
+                id: 5, category: "tips", catName: "Software Tips",
+                title: "Top 10 Canva Pro Features You're Not Using",
+                excerpt: "Canva Pro-তে অনেক powerful feature আছে যা多数 মানুষ use করে না। এই blog-এ আমরা TOP 10 feature নিয়ে আলোচনা করব...",
+                date: "Mar 25, 2026"
+            },
+            {
+                id: 6, category: "news", catName: "News & Updates",
+                title: "ChatGPT Plus vs Claude Pro — Which is Better?",
+                excerpt: "AI Tools এর দুনিয়ায় ChatGPT Plus আর Claude Pro-র মধ্যে তুলনা। কোনটা আপনার জন্য best? বিস্তারিত review...",
+                date: "Mar 20, 2026"
+            }
+        ];
+
+        function renderBlog(posts) {
+            const grid = document.getElementById('blogGrid');
+            grid.innerHTML = '';
+            posts.forEach((post, i) => {
+                const featuredHtml = post.featured ? '<span style="position:absolute;top:12px;left:12px;background:var(--gradient-1);color:white;padding:4px 12px;border-radius:100px;font-size:11px;font-weight:700">Featured</span>' : '';
+                const icons = ['📘','🤖','⚔️','💰','🎨','🧠'];
+                const card = `
+                    <div class="blog-card">
+                        <div class="blog-img" style="position:relative">
+                            <span style="font-size:60px;opacity:0.3">${icons[i % icons.length]}</span>
+                            ${featuredHtml}
+                        </div>
+                        <div class="blog-content">
+                            <span class="blog-category">${post.catName}</span>
+                            <h3>${post.title}</h3>
+                            <p>${post.excerpt}</p>
+                            <div class="blog-meta">
+                                <span><i class="far fa-calendar"></i> ${post.date}</span>
+                                <a href="#" class="read-more">Read more <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += card;
+            });
+        }
+
+        function filterBlog(category) {
+            document.querySelectorAll('#blogFilter .filter-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            if (category === 'all') renderBlog(blogPosts);
+            else renderBlog(blogPosts.filter(p => p.category === category));
+        }
+
+        document.addEventListener('DOMContentLoaded', () => renderBlog(blogPosts));
+    </script>
+</body>
+</html>

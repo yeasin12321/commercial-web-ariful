@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Premium Subscriptions — YourBrand</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .filter-bar {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+            justify-content: center;
+        }
+        .filter-btn {
+            padding: 10px 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 100px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: var(--font);
+        }
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            color: white;
+        }
+        .search-box {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 24px;
+            display: block;
+            position: relative;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 16px 20px 16px 50px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            font-size: 15px;
+            font-family: var(--font);
+        }
+        .search-box input:focus { outline: none; border-color: var(--accent-primary); }
+        .search-box i {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar (same as index.html) -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <svg width="180" height="45" viewBox="0 0 180 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="180" height="45" rx="8" fill="url(#logo-grad)"/>
+                    <text x="16" y="30" font-family="Inter" font-weight="800" font-size="20" fill="white">YourBrand</text>
+                    <text x="116" y="16" font-family="Inter" font-weight="600" font-size="7" fill="#a78bfa">PREMIUM</text>
+                    <text x="116" y="30" font-family="Inter" font-weight="400" font-size="9" fill="#94a3b8">SUBSCRIPTIONS</text>
+                    <defs><linearGradient id="logo-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#4f46e5"/></linearGradient></defs>
+                </svg>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html" class="active">Products</a>
+                <a href="blog.html">Blog</a>
+                <a href="support.html">Help & Support</a>
+                <div class="nav-dropdown">
+                    <button class="dropbtn">Categories <i class="fas fa-chevron-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="#" onclick="filterProducts('all')">All</a>
+                        <a href="#" onclick="filterProducts('Adobe')">Adobe</a>
+                        <a href="#" onclick="filterProducts('AI Tools')">AI Tools</a>
+                        <a href="#" onclick="filterProducts('Creative & Design')">Creative & Design</a>
+                        <a href="#" onclick="filterProducts('Video & Editing')">Video & Editing</a>
+                        <a href="#" onclick="filterProducts('Microsoft')">Microsoft</a>
+                        <a href="#" onclick="filterProducts('VPN & Security')">VPN & Security</a>
+                        <a href="#" onclick="filterProducts('Streaming & Entertainment')">Streaming & Entertainment</a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-right">
+                <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
+                <button class="lang-toggle">EN</button>
+                <a href="login.html" class="btn-login"><i class="fas fa-user"></i> Login</a>
+                <div class="hamburger" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <span class="current">Products</span>
+            </div>
+            <h1>Premium Digital Subscriptions</h1>
+            <p>Bangladesh's most trusted and verified premium subscriptions at the best price</p>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="featured-products">
+        <div class="container">
+            <!-- Filter Buttons -->
+            <div class="filter-bar" id="filterBar">
+                <button class="filter-btn active" onclick="filterProducts('all')">All</button>
+                <button class="filter-btn" onclick="filterProducts('Adobe')">Adobe</button>
+                <button class="filter-btn" onclick="filterProducts('AI Tools')">AI Tools</button>
+                <button class="filter-btn" onclick="filterProducts('Creative & Design')">Creative & Design</button>
+                <button class="filter-btn" onclick="filterProducts('Video & Editing')">Video & Editing</button>
+                <button class="filter-btn" onclick="filterProducts('Microsoft')">Microsoft</button>
+                <button class="filter-btn" onclick="filterProducts('VPN & Security')">VPN & Security</button>
+                <button class="filter-btn" onclick="filterProducts('Streaming & Entertainment')">Streaming & Entertainment</button>
+            </div>
+
+            <!-- Search -->
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search products..." onkeyup="searchProducts()">
+            </div>
+
+            <!-- Products Grid -->
+            <div id="productGrid" class="products-grid"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <svg width="180" height="45" viewBox="0 0 180 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="180" height="45" rx="8" fill="url(#logo-grad2)"/>
+                        <text x="16" y="30" font-family="Inter" font-weight="800" font-size="20" fill="white">YourBrand</text>
+                        <text x="116" y="16" font-family="Inter" font-weight="600" font-size="7" fill="#a78bfa">PREMIUM</text>
+                        <text x="116" y="30" font-family="Inter" font-weight="400" font-size="9" fill="#94a3b8">SUBSCRIPTIONS</text>
+                        <defs><linearGradient id="logo-grad2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#4f46e5"/></linearGradient></defs>
+                    </svg>
+                    <p>Your trusted destination for premium software, AI tools and digital subscriptions.</p>
+                    <p class="footer-address"><i class="fas fa-location-dot"></i> Your City, Bangladesh</p>
+                    <p class="footer-tagline">Trusted by 10,000+ customers Since 2024</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="products.html">All Products</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="support.html">Help & Support</a></li>
+                        <li><a href="dashboard.html">My Account</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="refund.html">Refund Policy</a></li>
+                        <li><a href="privacy.html#terms">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul class="support-list">
+                        <li><a href="tel:+8801234567890"><i class="fas fa-phone"></i> +8801234567890</a></li>
+                        <li class="small-text">WhatsApp Message Only</li>
+                        <li><a href="mailto:your@email.com"><i class="fas fa-envelope"></i> your@email.com</a></li>
+                        <li><a href="#"><i class="fab fa-whatsapp"></i> WhatsApp Chat</a></li>
+                        <li class="small-text">Sat – Thu · 10am – 10pm</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="payment-methods">
+                    <p>We Accept</p>
+                    <div class="payment-icons">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <span class="payment-local">bKash</span>
+                        <span class="payment-local">Nagad</span>
+                        <span class="payment-local">Rocket</span>
+                    </div>
+                </div>
+                <p class="copyright">&copy; 2026 YourBrand. All rights reserved</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            const icon = document.querySelector('.theme-toggle i');
+            icon.classList.toggle('fa-moon');
+            icon.classList.toggle('fa-sun');
+        }
+        function toggleMobileMenu() {
+            document.querySelector('.nav-links').classList.toggle('open');
+            document.querySelector('.nav-right').classList.toggle('open');
+        }
+        window.addEventListener('scroll', () => {
+            document.getElementById('backToTop').style.display = window.scrollY > 300 ? 'flex' : 'none';
+        });
+
+        // ── ALL PRODUCTS DATA ──
+        const allProducts = [
+            { id: 1, name: "Adobe Creative Cloud Pro Individual", category: "Adobe", price: 5299, original: 42500, discount: "-88%", sales: "1680+", slug: "adobe-cc", badge: "flagship", img: "https://placehold.co/400x400/1e1b4b/7c3aed?text=Adobe+CC" },
+            { id: 2, name: "YouTube Premium Subscription", category: "Streaming & Entertainment", price: 999, original: 1434, discount: "-30%", sales: "150+", slug: "youtube-premium", badge: "primary", img: "https://placehold.co/400x400/1e1b4b/2563eb?text=YouTube" },
+            { id: 3, name: "CapCut Pro Subscription", category: "Video & Editing", price: 550, original: 950, discount: "-42%", sales: "217+", slug: "capcut-pro", badge: "hot", img: "https://placehold.co/400x400/1e1b4b/dc2626?text=CapCut" },
+            { id: 4, name: "PIA VPN (Private Internet Access)", category: "VPN & Security", price: 180, original: 1230, discount: "-85%", sales: "1+", slug: "pia-vpn", badge: "primary", img: "https://placehold.co/400x400/1e1b4b/2563eb?text=PIA+VPN" },
+            { id: 5, name: "Kittl Subscription", category: "Creative & Design", price: 799, original: 2000, discount: "-60%", sales: "2+", slug: "kittl", badge: "popular", img: "https://placehold.co/400x400/1e1b4b/d97706?text=Kittl" },
+            { id: 6, name: "Claude Pro", category: "AI Tools", price: 2450, original: 3250, discount: "-25%", sales: "", slug: "claude-pro", badge: "primary", img: "https://placehold.co/400x400/1e1b4b/2563eb?text=Claude+Pro" },
+            { id: 7, name: "Grok AI", category: "AI Tools", price: 1550, original: 3550, discount: "-56%", sales: "", slug: "grok-ai", badge: "primary", img: "https://placehold.co/400x400/1e1b4b/2563eb?text=Grok+AI" },
+            { id: 8, name: "ChatGPT Plus Subscription", category: "AI Tools", price: 299, original: 400, discount: "-25%", sales: "186+", slug: "chatgpt", badge: "hot", img: "https://placehold.co/400x400/1e1b4b/dc2626?text=ChatGPT+" },
+            { id: 9, name: "Windows Key", category: "Microsoft", price: 450, original: 19900, discount: "-98%", sales: "4+", slug: "windows-key", badge: "popular", img: "https://placehold.co/400x400/1e1b4b/d97706?text=Windows" },
+            { id: 10, name: "Netflix Premium Subscription", category: "Streaming & Entertainment", price: 960, original: 1560, discount: "-38%", sales: "991+", slug: "netflix", badge: "popular", img: "https://placehold.co/400x400/1e1b4b/d97706?text=Netflix" },
+            { id: 11, name: "Prime Video Subscription", category: "Streaming & Entertainment", price: 100, original: 350, discount: "-71%", sales: "91+", slug: "prime-video", badge: "popular", img: "https://placehold.co/400x400/1e1b4b/d97706?text=Prime" },
+            { id: 12, name: "HBO Max Premium", category: "Streaming & Entertainment", price: 200, original: 350, discount: "-43%", sales: "6+", slug: "hbo-max", badge: "popular", img: "https://placehold.co/400x400/1e1b4b/d97706?text=HBO+Max" },
+            { id: 13, name: "Office 365 Subscription", category: "Microsoft", price: 1950, original: 7199, discount: "-73%", sales: "115+", slug: "office-365", badge: "primary", img: "https://placehold.co/400x400/1e1b4b/2563eb?text=Office+365" },
+            { id: 14, name: "Hotspot Shield VPN", category: "VPN & Security", price: 160, original: 350, discount: "-54%", sales: "1+", slug: "hotspot-shield", badge: "primary", img: "https://placehold.co/400x400/1e1b4b/2563eb?text=Hotspot" },
+            { id: 15, name: "Canva Pro", category: "Creative & Design", price: 99, original: 1200, discount: "-92%", sales: "3061+", slug: "canva-pro", badge: "popular", img: "https://placehold.co/400x400/1e1b4b/d97706?text=Canva+Pro" },
+        ];
+
+        let currentProducts = [...allProducts];
+
+        function renderProducts(products) {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = '';
+            if (products.length === 0) {
+                grid.innerHTML = '<div class="no-results" style="text-align:center;padding:60px;color:var(--text-muted)"><i class="fas fa-search" style="font-size:48px;margin-bottom:16px;display:block"></i>No products found</div>';
+                return;
+            }
+            products.forEach(p => {
+                const badgeClass = p.badge || 'primary';
+                const discountHtml = p.discount ? `<span class="badge -${badgeClass}">${badgeClass.toUpperCase()}${p.discount}</span>` : '';
+                const salesHtml = p.sales ? `<p class="sales-count"><i class="fas fa-shopping-cart"></i> ${p.sales} Sales</p>` : '';
+                const originalHtml = p.original ? `<span class="original-price">৳${p.original.toLocaleString()}</span>` : '';
+                const card = `
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img src="${p.img}" alt="${p.name}" loading="lazy">
+                            ${discountHtml}
+                        </div>
+                        <div class="product-info">
+                            <span class="product-category">${p.category}</span>
+                            <h3>${p.name}</h3>
+                            ${salesHtml}
+                            <div class="product-pricing">
+                                <span class="sale-price">৳${p.price.toLocaleString()}<span class="period">/mo</span></span>
+                                ${originalHtml}
+                            </div>
+                            <a href="${p.slug}.html" class="btn-view">View Plans <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += card;
+            });
+        }
+
+        function filterProducts(category) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            if (category === 'all') {
+                document.querySelectorAll('.filter-btn')[0].classList.add('active');
+                currentProducts = [...allProducts];
+            } else {
+                event.target.classList.add('active');
+                currentProducts = allProducts.filter(p => p.category === category);
+            }
+            renderProducts(currentProducts);
+        }
+
+        function searchProducts() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = allProducts.filter(p => 
+                p.name.toLowerCase().includes(query) || 
+                p.category.toLowerCase().includes(query)
+            );
+            renderProducts(filtered);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => renderProducts(allProducts));
+    </script>
+</body>
+</html>

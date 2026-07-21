@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help & Support — YourBrand</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <svg width="180" height="45" viewBox="0 0 180 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="180" height="45" rx="8" fill="url(#logo-grad)"/>
+                    <text x="16" y="30" font-family="Inter" font-weight="800" font-size="20" fill="white">YourBrand</text>
+                    <text x="116" y="16" font-family="Inter" font-weight="600" font-size="7" fill="#a78bfa">PREMIUM</text>
+                    <text x="116" y="30" font-family="Inter" font-weight="400" font-size="9" fill="#94a3b8">SUBSCRIPTIONS</text>
+                    <defs><linearGradient id="logo-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#4f46e5"/></linearGradient></defs>
+                </svg>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <a href="blog.html">Blog</a>
+                <a href="support.html" class="active">Help & Support</a>
+                <div class="nav-dropdown">
+                    <button class="dropbtn">Categories <i class="fas fa-chevron-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="products.html?cat=adobe">Adobe</a>
+                        <a href="products.html?cat=ai">AI Tools</a>
+                        <a href="products.html?cat=creative">Creative & Design</a>
+                        <a href="products.html?cat=video">Video & Editing</a>
+                        <a href="products.html?cat=microsoft">Microsoft</a>
+                        <a href="products.html?cat=vpn">VPN & Security</a>
+                        <a href="products.html?cat=streaming">Streaming & Entertainment</a>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-right">
+                <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
+                <button class="lang-toggle">EN</button>
+                <a href="login.html" class="btn-login"><i class="fas fa-user"></i> Login</a>
+                <div class="hamburger" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <span class="current">Help & Support</span>
+            </div>
+            <h1>Help & Support</h1>
+            <p>Get instant help, important updates, and the latest announcements — all in one place.</p>
+            <div style="margin-top:16px;display:flex;align-items:center;justify-content:center;gap:8px;color:var(--success);font-size:15px">
+                <span class="dot"></span> Online Now <span style="color:var(--text-muted)">Avg Response: &lt; 2 min</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-products" style="padding-top:20px;">
+        <div class="container">
+            <div class="support-grid">
+                <div class="support-card">
+                    <div class="support-icon"><i class="fab fa-whatsapp"></i></div>
+                    <h3>WhatsApp Support</h3>
+                    <p>Real human assistance, instantly</p>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Instant reply</li>
+                        <li><i class="fas fa-check"></i> Verified support</li>
+                        <li><i class="fas fa-check"></i> Real human assistance</li>
+                    </ul>
+                    <a href="#" class="btn-whatsapp" style="display:inline-flex;padding:12px 28px;font-size:14px;">Start Chat <i class="fab fa-whatsapp"></i></a>
+                </div>
+                <div class="support-card">
+                    <div class="support-icon"><i class="fab fa-facebook-messenger"></i></div>
+                    <h3>Facebook Messenger</h3>
+                    <p>Reach us via our official page</p>
+                    <p style="font-size:14px;color:var(--text-secondary);margin-bottom:16px">Chat with us directly through Facebook Messenger for quick support, product queries, and updates.</p>
+                    <a href="#" class="btn-secondary" style="display:inline-flex;padding:12px 28px;font-size:14px;">Open Messenger <i class="fab fa-facebook-messenger"></i></a>
+                </div>
+            </div>
+
+            <!-- Announcement -->
+            <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius);padding:24px;margin-bottom:32px">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px">
+                    <div>
+                        <span style="background:var(--accent-primary);color:white;padding:2px 10px;border-radius:100px;font-size:11px;font-weight:700">Limited Stock</span>
+                        <span style="background:#f59e0b;color:white;padding:2px 10px;border-radius:100px;font-size:11px;font-weight:700;margin-left:8px">Pinned</span>
+                        <h3 style="font-size:18px;font-weight:700;margin:12px 0 8px">Adobe Individual Plan Delivery Update</h3>
+                        <p style="color:var(--text-secondary);font-size:14px">বর্তমানে Adobe Server ও Payment Gateway সংক্রান্ত সীমাবদ্ধতার কারণে Adobe Individual Plan-এর Delivery Time বৃদ্ধি পেয়েছে। Pre-Order / Backorder চালু রয়েছে।</p>
+                        <span style="color:var(--text-muted);font-size:13px;margin-top:8px;display:inline-block">Jun 29, 2026</span>
+                    </div>
+                    <a href="#" style="color:var(--accent-primary);font-weight:600;font-size:14px;white-space:nowrap">Read more <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Business Hours -->
+            <div class="business-hours" style="margin-bottom:32px">
+                <h3>Business Hours</h3>
+                <span style="color:var(--success);font-size:14px;display:inline-block;margin-bottom:16px">Open Now · Available till 12:00 AM</span>
+                <div class="hours-grid">
+                    <div class="hours-row"><span class="day">Saturday</span><span class="time">9:30 AM – 12:00 AM</span></div>
+                    <div class="hours-row"><span class="day">Sunday</span><span class="time">9:30 AM – 12:00 AM</span></div>
+                    <div class="hours-row"><span class="day">Monday</span><span class="time">9:30 AM – 12:00 AM</span></div>
+                    <div class="hours-row"><span class="day">Tuesday</span><span class="time">9:30 AM – 12:00 AM</span></div>
+                    <div class="hours-row"><span class="day">Wednesday</span><span class="time">9:30 AM – 12:00 AM</span></div>
+                    <div class="hours-row"><span class="day">Thursday</span><span class="time">9:30 AM – 12:00 AM</span></div>
+                    <div class="hours-row"><span class="day">Friday</span><span class="time">10:00 AM – 12:00 AM</span></div>
+                </div>
+                <p style="color:var(--text-muted);font-size:12px;margin-top:12px">WhatsApp monitored outside hours (limited)</p>
+            </div>
+
+            <!-- FAQ -->
+            <div class="faq-section">
+                <h3>Frequently Asked Questions</h3>
+                <div class="faq-item open">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        How fast do you reply? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer" style="display:block">We typically respond within 2 minutes during business hours. Even outside hours, we monitor WhatsApp for urgent queries.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Is WhatsApp available 24/7? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">WhatsApp is monitored even outside business hours, but response time may be longer (up to 2-3 hours) during late night.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">
+                        Can I get help before purchase? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">Absolutely! Feel free to reach out on WhatsApp or Messenger before placing an order. We'll help you choose the right plan.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            const icon = document.querySelector('.theme-toggle i');
+            icon.classList.toggle('fa-moon'); icon.classList.toggle('fa-sun');
+        }
+        function toggleMobileMenu() {
+            document.querySelector('.nav-links').classList.toggle('open');
+            document.querySelector('.nav-right').classList.toggle('open');
+        }
+        window.addEventListener('scroll', () => {
+            document.getElementById('backToTop').style.display = window.scrollY > 300 ? 'flex' : 'none';
+        });
+        function toggleFaq(el) {
+            el.parentElement.classList.toggle('open');
+            const answer = el.parentElement.querySelector('.faq-answer');
+            answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</body>
+</html>
