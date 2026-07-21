@@ -1,23 +1,23 @@
 /* ═══════════════════════════════════════
-   YOURBRAND — Complete Stylesheet (Red/Pink Theme)
+   YOURBRAND — Complete Stylesheet (Red/Pink Theme & 3-Col Mobile)
    ═══════════════════════════════════════ */
 
 :root {
-    --bg-primary: #050505; /* ছবির মতো একদম ডার্ক ব্যাকগ্রাউন্ড */
+    --bg-primary: #050505;
     --bg-secondary: #0a0a0a;
     --bg-card: #0f0f13;
     --bg-card-hover: #16161c;
     --text-primary: #ffffff;
     --text-secondary: #a1a1aa;
     --text-muted: #71717a;
-    /* ছবির মতো একদম সেইম লালচে-পিংক কালার */
+    
     --accent-primary: #ff2a5f; 
     --accent-secondary: #ff4a6b;
     --accent-glow: rgba(255, 42, 95, 0.3);
-    --border-color: rgba(255, 255, 255, 0.08); /* হালকা বর্ডার */
+    --border-color: rgba(255, 255, 255, 0.08);
     --success: #22c55e;
     --whatsapp: #25d366;
-    /* বাটনের গ্রেডিয়েন্ট কালার */
+    
     --gradient-1: linear-gradient(135deg, #ff2a5f, #ff4a6b);
     --gradient-2: linear-gradient(135deg, #ff2a5f, #ff7b9c);
     --gradient-text: linear-gradient(135deg, #ff7b9c, #ff2a5f);
@@ -45,7 +45,6 @@
 body {
     font-family: var(--font);
     background-color: var(--bg-primary);
-    /* ছবির মতো ডার্ক গ্রিড ব্যাকগ্রাউন্ড */
     background-image: 
         linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
@@ -215,7 +214,6 @@ img { max-width: 100%; height: auto; }
     overflow: hidden;
 }
 
-/* হুবহু ছবির মতো সেন্ট্রাল গ্লো ইফেক্ট */
 .hero::before {
     content: '';
     position: absolute;
@@ -1427,7 +1425,23 @@ section { padding: 80px 0; }
     .stat-num { font-size: 22px; }
     
     .categories-grid { grid-template-columns: repeat(2, 1fr); }
-    .products-grid { grid-template-columns: 1fr; }
+    
+    /* ── MOBILE: 3 COLUMN GRID ── */
+    .products-grid { 
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 8px; 
+    }
+    .product-img { height: 100px; padding: 8px; }
+    .product-info { padding: 8px; }
+    .product-info h3 { font-size: 11px; margin: 4px 0; line-height: 1.2; }
+    .product-category { font-size: 9px; }
+    .sales-count { font-size: 10px; margin-bottom: 6px; }
+    .sale-price { font-size: 14px; }
+    .sale-price .period { font-size: 10px; }
+    .original-price { font-size: 11px; }
+    .btn-view { padding: 6px; font-size: 10px; justify-content: center; width: 100%; }
+    .badge { font-size: 8px; padding: 2px 6px; top: 6px; left: 6px; }
+    
     .features-grid { grid-template-columns: 1fr; }
     
     .steps-grid { flex-direction: column; }
