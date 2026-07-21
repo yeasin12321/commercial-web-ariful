@@ -27,8 +27,13 @@
         @media (max-width:480px) { .highlights-list { grid-template-columns:1fr; } }
         .highlights-list li { display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text-secondary); }
         .highlights-list li i { color:var(--success); }
+        
         .plan-card { display:flex; align-items:center; justify-content:space-between; padding:20px 24px; background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius-sm); cursor:pointer; transition:all 0.3s; margin-bottom:12px; }
-        .plan-card:hover, .plan-card.selected { border-color:var(--accent-primary); background:rgba(124,58,237,0.05); }
+        .plan-card:hover, .plan-card.selected { border-color:var(--accent-primary); background:rgba(255, 42, 95, 0.05); }
+        
+        /* Unavailable Plan CSS */
+        .plan-card.disabled { opacity: 0.5; pointer-events: none; background: var(--bg-primary); border-color: var(--border-color); }
+        
         .plan-card .plan-info { display:flex; align-items:center; gap:16px; }
         .plan-card .plan-name { font-weight:600; }
         .plan-card .plan-duration { font-size:13px; color:var(--text-muted); }
@@ -36,7 +41,7 @@
         .plan-card .plan-price { text-align:right; }
         .plan-card .plan-sale-price { font-size:22px; font-weight:800; }
         .plan-card .plan-original-price { font-size:13px; color:var(--text-muted); text-decoration:line-through; }
-        .plan-total { display:flex; align-items:center; justify-content:space-between; padding:20px 24px; background:rgba(124,58,237,0.05); border:1px solid rgba(124,58,237,0.2); border-radius:var(--radius-sm); margin:16px 0; }
+        .plan-total { display:flex; align-items:center; justify-content:space-between; padding:20px 24px; background:rgba(255, 42, 95, 0.05); border:1px solid rgba(255, 42, 95, 0.2); border-radius:var(--radius-sm); margin:16px 0; }
         .plan-total .total-label { font-weight:600; }
         .plan-total .total-price { font-size:24px; font-weight:800; }
         .btn-checkout { display:block; width:100%; padding:18px; background:var(--gradient-1); color:white; border:none; border-radius:var(--radius-sm); font-size:16px; font-weight:700; cursor:pointer; transition:all 0.3s; text-align:center; margin-top:16px; }
@@ -59,7 +64,7 @@
                 <svg width="160" height="40" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="160" height="40" rx="8" fill="url(#lg)"/>
                     <text x="14" y="26" font-family="Inter" font-weight="800" font-size="18" fill="white">YourBrand</text>
-                    <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#4f46e5"/></linearGradient></defs>
+                    <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff2a5f"/><stop offset="100%" stop-color="#ff4a6b"/></linearGradient></defs>
                 </svg>
             </a>
             <div class="nav-links">
@@ -91,7 +96,7 @@
                     <svg width="160" height="40" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="160" height="40" rx="8" fill="url(#lg2)"/>
                         <text x="14" y="26" font-family="Inter" font-weight="800" font-size="18" fill="white">YourBrand</text>
-                        <defs><linearGradient id="lg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#4f46e5"/></linearGradient></defs>
+                        <defs><linearGradient id="lg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff2a5f"/><stop offset="100%" stop-color="#ff4a6b"/></linearGradient></defs>
                     </svg>
                     <p>Your trusted destination for premium software.</p>
                 </div>
@@ -148,6 +153,13 @@
             document.getElementById('backToTop').style.display = window.scrollY > 300 ? 'flex' : 'none';
         });
 
+        // ═════ Plan Selection Logic ═════
+        window.selectPlan = function(element, price) {
+            document.querySelectorAll('.plan-card').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            document.getElementById('totalPrice').innerText = '৳' + Number(price).toLocaleString();
+        }
+
         async function loadProduct() {
             const urlParams = new URLSearchParams(window.location.search);
             const productId = urlParams.get('id');
@@ -167,17 +179,48 @@
                 if (product) {
                     renderProductDetail(product);
                 } else {
-                    // Try local sample
                     const sample = getSampleProducts().find(p => p.id === productId);
                     if (sample) renderProductDetail(sample);
                     else showNotFound();
                 }
             } catch(e) {
-                // Fallback to sample data
                 const sample = getSampleProducts().find(p => p.id === productId);
                 if (sample) renderProductDetail(sample);
                 else showNotFound();
             }
+        }
+
+        function createPlanHTML(title, duration, price, original, isPopular, isSelected) {
+            // যদি প্রাইস না থাকে তবে Unavailable দেখাবে
+            if (!price || price.toString().trim() === "") {
+                return `
+                <div class="plan-card disabled">
+                    <div class="plan-info">
+                        <div>
+                            <div class="plan-name">${title}</div>
+                            <div class="plan-duration">${duration}</div>
+                        </div>
+                    </div>
+                    <div class="plan-price">
+                        <div class="plan-sale-price" style="font-size:16px; color:var(--text-muted);">Unavailable</div>
+                    </div>
+                </div>`;
+            }
+            
+            return `
+            <div class="plan-card ${isSelected ? 'selected' : ''}" onclick="selectPlan(this, '${price}')">
+                <div class="plan-info">
+                    ${isPopular ? '<span class="plan-badge">Popular</span>' : ''}
+                    <div>
+                        <div class="plan-name">${title}</div>
+                        <div class="plan-duration">${duration}</div>
+                    </div>
+                </div>
+                <div class="plan-price">
+                    <div class="plan-sale-price">৳${Number(price).toLocaleString()}</div>
+                    ${original ? `<div class="plan-original-price">৳${Number(original).toLocaleString()}</div>` : ''}
+                </div>
+            </div>`;
         }
 
         function renderProductDetail(p) {
@@ -185,13 +228,35 @@
             document.title = `${p.name} — YourBrand`;
             
             const features = p.features ? p.features.split('|').map(f => f.trim()).filter(f => f) : [];
-            const img = p.image || p.image_url || `https://placehold.co/500x500/1e1b4b/7c3aed?text=${encodeURIComponent(p.name.substring(0,10))}`;
+            const img = p.image || p.image_url || `https://placehold.co/500x500/050505/ff2a5f?text=${encodeURIComponent(p.name.substring(0,10))}`;
             const badgeClass = p.badge || 'primary';
             
             let featuresHtml = '';
             features.forEach(f => {
                 featuresHtml += `<li><i class="fas fa-check-circle"></i> ${f}</li>`;
             });
+
+            // ═════ Google Sheet থেকে সরাসরি ডাটা নেওয়া ═════
+            let p12 = p.plan_12m_price;
+            let p12Orig = p.plan_12m_original;
+            let p6 = p.plan_6m_price;
+            let p6Orig = p.plan_6m_original;
+            let p1 = p.plan_1m_price;
+            let p1Orig = p.plan_1m_original;
+
+            // যদি গুগল শিটে কোনো প্ল্যানের প্রাইসই না থাকে, তবে আগের মত sale_price টাই ১২ মাসের প্রাইস ধরে নিবে (ডিফল্ট)
+            if (!p12 && !p6 && !p1 && p.sale_price) {
+                p12 = p.sale_price;
+                p12Orig = p.original_price;
+            }
+
+            // ডিফল্টভাবে কোন প্ল্যানটি সিলেক্টেড থাকবে তার লজিক
+            let defaultPrice = 0;
+            let s12 = false, s6 = false, s1 = false;
+
+            if (p12) { s12 = true; defaultPrice = p12; }
+            else if (p6) { s6 = true; defaultPrice = p6; }
+            else if (p1) { s1 = true; defaultPrice = p1; }
 
             container.innerHTML = `
                 <section style="padding:120px 0 0">
@@ -226,7 +291,7 @@
                                 <p class="product-description">${p.description || `Premium ${p.name} subscription with secure activation, fast delivery, and full warranty.`}</p>
 
                                 <div class="product-price-large">
-                                    <span class="price-current">৳${Number(p.sale_price).toLocaleString()}<span class="period">/mo</span></span>
+                                    <span class="price-current">৳${defaultPrice ? Number(defaultPrice).toLocaleString() : '0'}<span class="period">/mo</span></span>
                                     ${p.original_price ? `<span class="price-original">৳${Number(p.original_price).toLocaleString()}</span>` : ''}
                                 </div>
 
@@ -237,36 +302,15 @@
 
                                 <h3 style="font-size:18px;font-weight:700;margin:30px 0 16px">Choose Your Plan</h3>
                                 
-                                <div class="plan-card selected">
-                                    <div class="plan-info">
-                                        <span class="plan-badge">Popular</span>
-                                        <div>
-                                            <div class="plan-name">12 Months</div>
-                                            <div class="plan-duration">360 days access</div>
-                                        </div>
-                                    </div>
-                                    <div class="plan-price">
-                                        <div class="plan-sale-price">৳${Number(p.sale_price).toLocaleString()}</div>
-                                        ${p.original_price ? `<div class="plan-original-price">৳${Number(p.original_price).toLocaleString()}</div>` : ''}
-                                    </div>
-                                </div>
-
-                                <div class="plan-card">
-                                    <div class="plan-info">
-                                        <div>
-                                            <div class="plan-name">6 Months</div>
-                                            <div class="plan-duration">180 days access</div>
-                                        </div>
-                                    </div>
-                                    <div class="plan-price">
-                                        <div class="plan-sale-price">৳${Math.round(Number(p.sale_price) * 0.6).toLocaleString()}</div>
-                                        ${p.original_price ? `<div class="plan-original-price">৳${Math.round(Number(p.original_price) * 0.6).toLocaleString()}</div>` : ''}
-                                    </div>
+                                <div class="plans">
+                                    ${createPlanHTML("12 Months", "360 days access", p12, p12Orig, true, s12)}
+                                    ${createPlanHTML("6 Months", "180 days access", p6, p6Orig, false, s6)}
+                                    ${createPlanHTML("1 Month", "30 days access", p1, p1Orig, false, s1)}
                                 </div>
 
                                 <div class="plan-total">
                                     <span class="total-label">Total</span>
-                                    <span class="total-price">৳${Number(p.sale_price).toLocaleString()}</span>
+                                    <span class="total-price" id="totalPrice">৳${defaultPrice ? Number(defaultPrice).toLocaleString() : '0'}</span>
                                 </div>
 
                                 <a href="https://wa.link/j3el1v" target="_blank" class="btn-checkout">
@@ -297,7 +341,7 @@
                 const grid = document.getElementById('similarGrid');
                 if (grid) {
                     similar.forEach(sp => {
-                        const simg = sp.image || sp.image_url || 'https://placehold.co/300x300/1e1b4b/7c3aed?text=Product';
+                        const simg = sp.image || sp.image_url || 'https://placehold.co/300x300/050505/ff2a5f?text=Product';
                         grid.innerHTML += `
                             <div class="product-card" onclick="window.location.href='product.html?id=${sp.id || sp.slug || sp.name}'">
                                 <div class="product-img" style="height:160px">
@@ -336,10 +380,18 @@
 
         function getSampleProducts() {
             return [
-                { id:"adobe-cc", name:"Adobe Creative Cloud Pro", category:"Adobe", sale_price:"5299", original_price:"42500", discount_percent:"88%", sales_count:"1680", image:"https://placehold.co/500x500/1e1b4b/7c3aed?text=Adobe+CC", badge:"flagship", description:"Full Adobe Creative Cloud access with 50+ apps, 100GB cloud storage, and Firefly AI.", features:"Personal email activation|2 device login|50+ Adobe apps|Firefly AI with 4000 credits|Full warranty|100GB cloud storage" },
-                { id:"canva-pro", name:"Canva Pro", category:"Creative & Design", sale_price:"99", original_price:"1200", discount_percent:"92%", sales_count:"3061", image:"https://placehold.co/500x500/1e1b4b/d97706?text=Canva+Pro", badge:"popular", description:"Canva Pro with premium templates, background remover, and AI features.", features:"Premium Templates|Background Remover|Brand Kit|AI Features|Full warranty" },
-                { id:"chatgpt", name:"ChatGPT Plus", category:"AI Tools", sale_price:"299", original_price:"400", discount_percent:"25%", sales_count:"186", image:"https://placehold.co/500x500/1e1b4b/dc2626?text=ChatGPT+Plus", badge:"hot", description:"Full ChatGPT Plus with GPT-4, priority access, and plugins support.", features:"GPT-4 access|Priority access|Faster response|Plugins support|Full warranty" },
-                { id:"netflix", name:"Netflix Premium", category:"Streaming & Entertainment", sale_price:"960", original_price:"1560", discount_percent:"38%", sales_count:"991", image:"https://placehold.co/500x500/1e1b4b/2563eb?text=Netflix", badge:"popular", description:"Netflix Premium with 4K HDR, Ultra HD, and 4 device support.", features:"Ultra HD|4K HDR|4 devices|Ad-free|Full warranty" }
+                { 
+                    id:"6", name:"Gemini 1.5 Pro Model", category:"AI Tools", 
+                    sale_price:"170", original_price:"3500", 
+                    plan_12m_price:"", plan_12m_original:"", // এটি ফাঁকা রাখলে Unavailable দেখাবে
+                    plan_6m_price:"102", plan_6m_original:"2100", 
+                    plan_1m_price:"170", plan_1m_original:"3500",
+                    discount_percent:"95%", sales_count:"850", 
+                    image:"https://placehold.co/500x500/050505/ff2a5f?text=Gemini", 
+                    badge:"hot", 
+                    description:"Advanced AI model with premium features.", 
+                    features:"Personal email activation|2TB Google One Storage|Full warranty|Gemini 1.5 Pro Model|AI in Docs & Gmail" 
+                }
             ];
         }
 
