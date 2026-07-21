@@ -2210,3 +2210,26 @@ body::after {
     color: white; 
     box-shadow: 0 4px 15px var(--accent-glow);
 }
+/* Product Detail Image Mobile Fix */
+.product-gallery img {
+    width: 100% !important;
+    max-height: 300px !important; /* ছবির সর্বোচ্চ উচ্চতা বেঁধে দেওয়া হলো */
+    object-fit: contain !important;
+    padding: 20px !important;
+}
+
+/* যদি মোবাইলের জন্য আলাদা ফিক্স করতে চান */
+@media (max-width: 768px) {
+    .product-detail-grid {
+        display: flex;
+        flex-direction: column;
+    }
+    .product-gallery {
+        position: relative !important;
+        top: 0 !important;
+        margin-bottom: 20px;
+    }
+    .product-gallery img {
+        max-height: 220px !important;
+    }
+}
