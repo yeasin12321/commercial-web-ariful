@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Details — YourBrand</title>
+    <title>Product Details — Jinis Kini</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- EmailJS CDN -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
         .loading-state { text-align:center; padding:100px 0; }
         .loading-state i { font-size:48px; color:var(--accent-primary); margin-bottom:16px; }
@@ -28,10 +30,9 @@
         .highlights-list li { display:flex; align-items:center; gap:10px; font-size:14px; color:var(--text-secondary); }
         .highlights-list li i { color:var(--success); }
         
-        .plan-card { display:flex; align-items:center; justify-content:space-between; padding:20px 24px; background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius-sm); cursor:pointer; transition:all 0.3s; margin-bottom:12px; }
-        .plan-card:hover, .plan-card.selected { border-color:var(--accent-primary); background:rgba(255, 42, 95, 0.05); }
+        .plan-card { display:flex; align-items:center; justify-content:space-between; padding:20px 24px; background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius-sm); cursor:pointer; transition:all 0.3s; margin-bottom:12px; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .plan-card:hover, .plan-card.selected { border-color:var(--accent-primary); background:rgba(255, 42, 95, 0.05); box-shadow: 0 4px 15px rgba(255,42,95,0.1); }
         
-        /* Unavailable Plan CSS */
         .plan-card.disabled { opacity: 0.5; pointer-events: none; background: var(--bg-primary); border-color: var(--border-color); }
         
         .plan-card .plan-info { display:flex; align-items:center; gap:16px; }
@@ -44,8 +45,8 @@
         .plan-total { display:flex; align-items:center; justify-content:space-between; padding:20px 24px; background:rgba(255, 42, 95, 0.05); border:1px solid rgba(255, 42, 95, 0.2); border-radius:var(--radius-sm); margin:16px 0; }
         .plan-total .total-label { font-weight:600; }
         .plan-total .total-price { font-size:24px; font-weight:800; }
-        .btn-checkout { display:block; width:100%; padding:18px; background:var(--gradient-1); color:white; border:none; border-radius:var(--radius-sm); font-size:16px; font-weight:700; cursor:pointer; transition:all 0.3s; text-align:center; margin-top:16px; }
-        .btn-checkout:hover { opacity:0.9; transform:translateY(-2px); }
+        .btn-checkout { display:block; width:100%; padding:18px; background:var(--gradient-1); color:white; border:none; border-radius:var(--radius-sm); font-size:16px; font-weight:700; cursor:pointer; transition:all 0.3s; text-align:center; margin-top:16px; font-family:var(--font); }
+        .btn-checkout:hover { opacity:0.9; transform:translateY(-2px); box-shadow: 0 8px 25px var(--accent-glow); }
         .trust-badges { display:flex; justify-content:center; gap:24px; margin:20px 0; flex-wrap:wrap; }
         .trust-badges span { font-size:13px; color:var(--text-muted); display:flex; align-items:center; gap:6px; }
         .trust-badges i { color:var(--success); }
@@ -55,6 +56,45 @@
         .not-found h2 { margin-bottom:8px; }
         .similarly { margin-top:60px; }
         .similarly h3 { margin-bottom:20px; font-size:22px; font-weight:700; }
+
+        /* ═══ Payment Modal CSS ═══ */
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.75); z-index: 2000; align-items: center; justify-content: center;
+            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+        }
+        .modal-content {
+            background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius);
+            padding: 32px; width: 90%; max-width: 450px; position: relative;
+            box-shadow: var(--shadow-card);
+        }
+        .close-modal {
+            position: absolute; top: 16px; right: 20px; background: none; border: none;
+            color: var(--text-muted); font-size: 24px; cursor: pointer; transition: 0.3s;
+        }
+        .close-modal:hover { color: var(--accent-primary); transform: rotate(90deg); }
+        .payment-methods-modal { display: flex; gap: 10px; margin-bottom: 24px; }
+        .pay-btn {
+            flex: 1; padding: 12px 8px; border: 1px solid var(--border-color); border-radius: var(--radius-xs);
+            background: rgba(255,255,255,0.03); color: var(--text-secondary); cursor: pointer; text-align: center;
+            transition: all 0.3s;
+        }
+        .pay-btn:hover { border-color: var(--accent-primary); }
+        .pay-btn.active { border-color: var(--accent-primary); background: rgba(255, 42, 95, 0.1); color: var(--text-primary); font-weight: 600; }
+        .pay-btn strong { display:block; font-size: 14px; margin-bottom: 4px; }
+        .pay-btn small { font-size: 11px; opacity: 0.8; }
+        .form-group { margin-bottom: 16px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 8px; font-size: 13px; color: var(--text-secondary); font-weight: 500; }
+        .form-group input {
+            width: 100%; padding: 14px; background: rgba(0,0,0,0.2); border: 1px solid var(--border-color);
+            border-radius: var(--radius-xs); color: white; font-family: var(--font); font-size: 14px; transition: 0.3s;
+        }
+        .form-group input:focus { outline: none; border-color: var(--accent-primary); background: rgba(0,0,0,0.4); }
+        .quick-whatsapp {
+            display: flex; align-items: center; justify-content: center; gap: 8px; margin: 20px 0; font-size: 14px; color: var(--whatsapp);
+            text-decoration: none; font-weight: 500; padding: 12px; border-radius: var(--radius-xs); background: rgba(37, 211, 102, 0.1); border: 1px solid rgba(37, 211, 102, 0.2); transition: 0.3s;
+        }
+        .quick-whatsapp:hover { background: rgba(37, 211, 102, 0.2); transform: translateY(-2px); }
     </style>
 </head>
 <body>
@@ -63,7 +103,7 @@
             <a href="index.html" class="logo">
                 <svg width="160" height="40" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="160" height="40" rx="8" fill="url(#lg)"/>
-                    <text x="14" y="26" font-family="Inter" font-weight="800" font-size="18" fill="white">YourBrand</text>
+                    <text x="14" y="26" font-family="Inter" font-weight="800" font-size="18" fill="white">Jinis Kini</text>
                     <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff2a5f"/><stop offset="100%" stop-color="#ff4a6b"/></linearGradient></defs>
                 </svg>
             </a>
@@ -75,7 +115,7 @@
             </div>
             <div class="nav-right">
                 <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
-                <button class="lang-toggle">EN</button>
+                <button class="lang-toggle" id="langBtn" onclick="toggleLanguage()">EN</button>
                 <a href="login.html" class="btn-login"><i class="fas fa-user"></i> Login</a>
                 <div class="hamburger" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></div>
             </div>
@@ -89,13 +129,60 @@
         </div>
     </div>
 
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closePaymentModal()"><i class="fas fa-times"></i></button>
+            <h3 style="margin-bottom: 8px; font-size: 22px; font-weight: 800;">Payment Korun</h3>
+            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 24px;">Please send the amount to one of the numbers below and submit your details.</p>
+            
+            <div class="payment-methods-modal">
+                <div class="pay-btn active" onclick="selectMethod(this, 'bKash')">
+                    <strong>bKash</strong><small>01324214516</small>
+                </div>
+                <div class="pay-btn" onclick="selectMethod(this, 'Nagad')">
+                    <strong>Nagad</strong><small>01324214516</small>
+                </div>
+                <div class="pay-btn" onclick="selectMethod(this, 'Rocket')">
+                    <strong>Rocket</strong><small>01324214516</small>
+                </div>
+            </div>
+
+            <form id="paymentForm">
+                <input type="hidden" id="productName" name="product_name">
+                <input type="hidden" id="selectedMethod" name="payment_method" value="bKash">
+                <input type="hidden" id="amountToPay" name="amount">
+                
+                <div class="form-group">
+                    <label>Your Name (আপনার নাম)</label>
+                    <input type="text" id="senderName" name="sender_name" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label>Account Number (যে নম্বর থেকে টাকা পাঠিয়েছেন)</label>
+                    <input type="text" id="senderNumber" name="sender_number" required placeholder="e.g. 01324214516">
+                </div>
+                <div class="form-group">
+                    <label>Transaction ID (TrxID)</label>
+                    <input type="text" id="trxId" name="trx_id" required placeholder="e.g. 8N5G2A9X">
+                </div>
+                
+                <!-- WhatsApp Quick Link -->
+               <a href="https://wa.me/01324214516" target="_blank" class="btn-whatsapp">
+                    <i class="fab fa-whatsapp" style="font-size: 18px;"></i> দ্রুত সেবা পেতে WhatsApp-এ যোগাযোগ করুন
+                </a>
+                
+                <button type="submit" class="btn-checkout" id="submitPaymentBtn">Submit Payment Details</button>
+            </form>
+        </div>
+    </div>
+
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
                     <svg width="160" height="40" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect width="160" height="40" rx="8" fill="url(#lg2)"/>
-                        <text x="14" y="26" font-family="Inter" font-weight="800" font-size="18" fill="white">YourBrand</text>
+                        <text x="14" y="26" font-family="Inter" font-weight="800" font-size="18" fill="white">Jinis Kini</text>
                         <defs><linearGradient id="lg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff2a5f"/><stop offset="100%" stop-color="#ff4a6b"/></linearGradient></defs>
                     </svg>
                     <p>Your trusted destination for premium software.</p>
@@ -120,7 +207,7 @@
                 <div class="footer-links">
                     <h4>Support</h4>
                     <ul class="support-list">
-                        <li><a href="tel:+8801234567890"><i class="fas fa-phone"></i> +8801234567890</a></li>
+                        <li><a href="tel:+8801324214516"><i class="fas fa-phone"></i> +8801324214516</a></li>
                         <li class="small-text">WhatsApp Only</li>
                         <li><a href="mailto:your@email.com"><i class="fas fa-envelope"></i> your@email.com</a></li>
                         <li><a href="#"><i class="fab fa-whatsapp"></i> WhatsApp Chat</a></li>
@@ -128,12 +215,21 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p class="copyright">&copy; 2026 YourBrand. All rights reserved</p>
+                <p class="copyright">&copy; 2026 Jinis Kini. All rights reserved</p>
             </div>
         </div>
     </footer>
 
     <button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- Google Translate Element (Hidden) -->
+    <div id="google_translate_element" style="display:none;"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en', includedLanguages: 'en,bn', autoDisplay: false }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <script>
         // ═══ YOUR SHEET API URL ═══
@@ -153,6 +249,20 @@
             document.getElementById('backToTop').style.display = window.scrollY > 300 ? 'flex' : 'none';
         });
 
+        // ── Translation Toggle Logic ──
+        let isBangla = false;
+        function toggleLanguage() {
+            let selectField = document.querySelector(".goog-te-combo");
+            let langBtn = document.getElementById('langBtn');
+            if (selectField) {
+                if (!isBangla) {
+                    selectField.value = "bn"; selectField.dispatchEvent(new Event("change")); langBtn.innerText = "BN"; isBangla = true;
+                } else {
+                    selectField.value = "en"; selectField.dispatchEvent(new Event("change")); langBtn.innerText = "EN"; isBangla = false;
+                }
+            } else { console.log("Google Translate is loading..."); }
+        }
+
         // ═════ Plan Selection Logic ═════
         window.selectPlan = function(element, price) {
             document.querySelectorAll('.plan-card').forEach(el => el.classList.remove('selected'));
@@ -163,58 +273,29 @@
         async function loadProduct() {
             const urlParams = new URLSearchParams(window.location.search);
             const productId = urlParams.get('id');
-            
-            if (!productId) {
-                showNotFound();
-                return;
-            }
-
+            if (!productId) { showNotFound(); return; }
             try {
                 const res = await fetch(SHEET_API);
                 allProducts = await res.json();
-                const product = allProducts.find(p => 
-                    p.id == productId || p.slug === productId || p.name === productId
-                );
-                
-                if (product) {
-                    renderProductDetail(product);
-                } else {
-                    const sample = getSampleProducts().find(p => p.id === productId);
-                    if (sample) renderProductDetail(sample);
-                    else showNotFound();
-                }
-            } catch(e) {
-                const sample = getSampleProducts().find(p => p.id === productId);
-                if (sample) renderProductDetail(sample);
+                const product = allProducts.find(p => p.id == productId || p.slug === productId || p.name === productId);
+                if (product) renderProductDetail(product);
                 else showNotFound();
-            }
+            } catch(e) { showNotFound(); }
         }
 
         function createPlanHTML(title, duration, price, original, isPopular, isSelected) {
-            // যদি প্রাইস না থাকে তবে Unavailable দেখাবে
             if (!price || price.toString().trim() === "") {
                 return `
                 <div class="plan-card disabled">
-                    <div class="plan-info">
-                        <div>
-                            <div class="plan-name">${title}</div>
-                            <div class="plan-duration">${duration}</div>
-                        </div>
-                    </div>
-                    <div class="plan-price">
-                        <div class="plan-sale-price" style="font-size:16px; color:var(--text-muted);">Unavailable</div>
-                    </div>
+                    <div class="plan-info"><div><div class="plan-name">${title}</div><div class="plan-duration">${duration}</div></div></div>
+                    <div class="plan-price"><div class="plan-sale-price" style="font-size:16px; color:var(--text-muted);">Unavailable</div></div>
                 </div>`;
             }
-            
             return `
             <div class="plan-card ${isSelected ? 'selected' : ''}" onclick="selectPlan(this, '${price}')">
                 <div class="plan-info">
                     ${isPopular ? '<span class="plan-badge">Popular</span>' : ''}
-                    <div>
-                        <div class="plan-name">${title}</div>
-                        <div class="plan-duration">${duration}</div>
-                    </div>
+                    <div><div class="plan-name">${title}</div><div class="plan-duration">${duration}</div></div>
                 </div>
                 <div class="plan-price">
                     <div class="plan-sale-price">৳${Number(price).toLocaleString()}</div>
@@ -225,36 +306,29 @@
 
         function renderProductDetail(p) {
             const container = document.getElementById('productDetailContainer');
-            document.title = `${p.name} — YourBrand`;
+            document.title = `${p.name} — Jinis Kini`;
             
             const features = p.features ? p.features.split('|').map(f => f.trim()).filter(f => f) : [];
             const img = p.image || p.image_url || `https://placehold.co/500x500/050505/ff2a5f?text=${encodeURIComponent(p.name.substring(0,10))}`;
             const badgeClass = p.badge || 'primary';
             
             let featuresHtml = '';
-            features.forEach(f => {
-                featuresHtml += `<li><i class="fas fa-check-circle"></i> ${f}</li>`;
-            });
+            features.forEach(f => { featuresHtml += `<li><i class="fas fa-check-circle"></i> ${f}</li>`; });
 
-            // ═════ Google Sheet থেকে সরাসরি ডাটা নেওয়া ═════
-            let p12 = p.plan_12m_price;
-            let p12Orig = p.plan_12m_original;
-            let p6 = p.plan_6m_price;
-            let p6Orig = p.plan_6m_original;
-            let p1 = p.plan_1m_price;
-            let p1Orig = p.plan_1m_original;
+            // Google Sheet variables mapping
+            let p24 = p.plan_24m_price; let p24Orig = p.plan_24m_original;
+            let p12 = p.plan_12m_price; let p12Orig = p.plan_12m_original;
+            let p6 = p.plan_6m_price; let p6Orig = p.plan_6m_original;
+            let p1 = p.plan_1m_price; let p1Orig = p.plan_1m_original;
 
-            // যদি গুগল শিটে কোনো প্ল্যানের প্রাইসই না থাকে, তবে আগের মত sale_price টাই ১২ মাসের প্রাইস ধরে নিবে (ডিফল্ট)
-            if (!p12 && !p6 && !p1 && p.sale_price) {
-                p12 = p.sale_price;
-                p12Orig = p.original_price;
-            }
+            // Default fallback if plans are not configured
+            if (!p24 && !p12 && !p6 && !p1 && p.sale_price) { p12 = p.sale_price; p12Orig = p.original_price; }
 
-            // ডিফল্টভাবে কোন প্ল্যানটি সিলেক্টেড থাকবে তার লজিক
-            let defaultPrice = 0;
-            let s12 = false, s6 = false, s1 = false;
-
-            if (p12) { s12 = true; defaultPrice = p12; }
+            let defaultPrice = 0; 
+            let s24 = false, s12 = false, s6 = false, s1 = false;
+            
+            if (p24) { s24 = true; defaultPrice = p24; }
+            else if (p12) { s12 = true; defaultPrice = p12; }
             else if (p6) { s6 = true; defaultPrice = p6; }
             else if (p1) { s1 = true; defaultPrice = p1; }
 
@@ -272,22 +346,18 @@
                 <section class="product-detail">
                     <div class="container">
                         <div class="product-detail-grid">
-                            <div class="product-gallery">
-                                <img src="${img}" alt="${p.name}">
-                            </div>
+                            <div class="product-gallery"><img src="${img}" alt="${p.name}"></div>
                             <div class="product-detail-info">
                                 <div style="margin-bottom:8px">
                                     <span class="product-category">${p.category || 'Digital'}</span>
                                     ${p.discount_percent ? `<span class="badge -${badgeClass}" style="position:relative;top:0;left:0;margin-left:8px">${p.discount_percent}</span>` : ''}
                                 </div>
                                 <h1>${p.name}</h1>
-                                
                                 <div class="product-meta">
                                     ${p.sales_count ? `<span><i class="fas fa-shopping-cart"></i> ${p.sales_count}+ Customers</span>` : ''}
                                     <span><i class="fas fa-star" style="color:#f59e0b"></i> 4.8/5 Rating</span>
                                     <span><i class="fas fa-shield"></i> Full Warranty</span>
                                 </div>
-
                                 <p class="product-description">${p.description || `Premium ${p.name} subscription with secure activation, fast delivery, and full warranty.`}</p>
 
                                 <div class="product-price-large">
@@ -295,14 +365,11 @@
                                     ${p.original_price ? `<span class="price-original">৳${Number(p.original_price).toLocaleString()}</span>` : ''}
                                 </div>
 
-                                ${featuresHtml ? `
-                                    <h3 style="font-size:18px;font-weight:700;margin:24px 0 12px">What's Included</h3>
-                                    <ul class="highlights-list">${featuresHtml}</ul>
-                                ` : ''}
+                                ${featuresHtml ? `<h3 style="font-size:18px;font-weight:700;margin:24px 0 12px">What's Included</h3><ul class="highlights-list">${featuresHtml}</ul>` : ''}
 
                                 <h3 style="font-size:18px;font-weight:700;margin:30px 0 16px">Choose Your Plan</h3>
-                                
                                 <div class="plans">
+                                    ${createPlanHTML("24 Months", "720 days access", p24, p24Orig, false, s24)}
                                     ${createPlanHTML("12 Months", "360 days access", p12, p12Orig, true, s12)}
                                     ${createPlanHTML("6 Months", "180 days access", p6, p6Orig, false, s6)}
                                     ${createPlanHTML("1 Month", "30 days access", p1, p1Orig, false, s1)}
@@ -313,9 +380,9 @@
                                     <span class="total-price" id="totalPrice">৳${defaultPrice ? Number(defaultPrice).toLocaleString() : '0'}</span>
                                 </div>
 
-                                <a href="https://wa.link/j3el1v" target="_blank" class="btn-checkout">
-                                    <i class="fab fa-whatsapp"></i> Order Now via WhatsApp
-                                </a>
+                                <button class="btn-checkout" onclick="openPaymentModal('${p.name.replace(/'/g, "\\'")}')">
+                                    Payment Korun <i class="fas fa-arrow-right"></i>
+                                </button>
 
                                 <div class="trust-badges">
                                     <span><i class="fas fa-check-circle"></i> 10K+ Customers</span>
@@ -324,78 +391,70 @@
                                 </div>
                             </div>
                         </div>
-
-                        ${allProducts.length > 1 ? `
-                            <div class="similarly">
-                                <h3>Similar Products · অনুরূপ সাবস্ক্রিপশন</h3>
-                                <div class="products-grid" id="similarGrid"></div>
-                            </div>
-                        ` : ''}
                     </div>
                 </section>
             `;
-
-            // Render similar products
-            if (allProducts.length > 1) {
-                const similar = allProducts.filter(x => x.category === p.category && x.id !== p.id).slice(0, 4);
-                const grid = document.getElementById('similarGrid');
-                if (grid) {
-                    similar.forEach(sp => {
-                        const simg = sp.image || sp.image_url || 'https://placehold.co/300x300/050505/ff2a5f?text=Product';
-                        grid.innerHTML += `
-                            <div class="product-card" onclick="window.location.href='product.html?id=${sp.id || sp.slug || sp.name}'">
-                                <div class="product-img" style="height:160px">
-                                    <img src="${simg}" alt="${sp.name}" style="max-width:60%;max-height:60%">
-                                    ${sp.discount_percent ? `<span class="badge -${sp.badge||'primary'}">${sp.discount_percent}</span>` : ''}
-                                </div>
-                                <div class="product-info" style="padding:12px 14px">
-                                    <h3 style="font-size:14px">${sp.name}</h3>
-                                    <div class="product-pricing" style="margin-bottom:8px">
-                                        <span class="sale-price" style="font-size:18px">৳${Number(sp.sale_price).toLocaleString()}<span class="period">/mo</span></span>
-                                    </div>
-                                    <button class="btn-view" onclick="event.stopPropagation();window.location.href='product.html?id=${sp.id || sp.slug || sp.name}'" style="font-size:12px;padding:6px 16px">View</button>
-                                </div>
-                            </div>
-                        `;
-                    });
-                }
-            }
         }
 
         function showNotFound() {
             const container = document.getElementById('productDetailContainer');
             container.innerHTML = `
-                <section style="padding:140px 0 80px">
-                    <div class="container">
-                        <div class="not-found">
-                            <i class="fas fa-box-open"></i>
-                            <h2>Product Not Found</h2>
-                            <p style="color:var(--text-muted);margin-bottom:24px">The product you're looking for doesn't exist or has been removed.</p>
-                            <a href="products.html" class="btn-primary">Browse Products <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </section>
+                <section style="padding:140px 0 80px"><div class="container"><div class="not-found"><i class="fas fa-box-open"></i><h2>Product Not Found</h2><a href="products.html" class="btn-primary">Browse Products</a></div></div></section>
             `;
         }
 
-        function getSampleProducts() {
-            return [
-                { 
-                    id:"6", name:"Gemini 1.5 Pro Model", category:"AI Tools", 
-                    sale_price:"170", original_price:"3500", 
-                    plan_12m_price:"", plan_12m_original:"", // এটি ফাঁকা রাখলে Unavailable দেখাবে
-                    plan_6m_price:"102", plan_6m_original:"2100", 
-                    plan_1m_price:"170", plan_1m_original:"3500",
-                    discount_percent:"95%", sales_count:"850", 
-                    image:"https://placehold.co/500x500/050505/ff2a5f?text=Gemini", 
-                    badge:"hot", 
-                    description:"Advanced AI model with premium features.", 
-                    features:"Personal email activation|2TB Google One Storage|Full warranty|Gemini 1.5 Pro Model|AI in Docs & Gmail" 
-                }
-            ];
+        document.addEventListener('DOMContentLoaded', loadProduct);
+
+        // ═════ Payment Modal & EmailJS Logic ═════
+
+        // EmailJS Public Key
+        emailjs.init("YOUR_PUBLIC_KEY"); 
+
+        function openPaymentModal(productName) {
+            const currentPriceText = document.getElementById('totalPrice').innerText;
+            document.getElementById('productName').value = productName;
+            document.getElementById('amountToPay').value = currentPriceText;
+            document.getElementById('paymentModal').style.display = 'flex';
         }
 
-        document.addEventListener('DOMContentLoaded', loadProduct);
+        function closePaymentModal() {
+            document.getElementById('paymentModal').style.display = 'none';
+            document.getElementById('paymentForm').reset();
+        }
+
+        function selectMethod(element, method) {
+            document.querySelectorAll('.pay-btn').forEach(btn => btn.classList.remove('active'));
+            element.classList.add('active');
+            document.getElementById('selectedMethod').value = method;
+        }
+
+        document.getElementById('paymentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitPaymentBtn');
+            btn.innerText = "Submitting Data...";
+            btn.disabled = true;
+            
+            const templateParams = {
+                product_name: document.getElementById('productName').value,
+                amount: document.getElementById('amountToPay').value,
+                payment_method: document.getElementById('selectedMethod').value,
+                sender_name: document.getElementById('senderName').value,
+                sender_number: document.getElementById('senderNumber').value,
+                trx_id: document.getElementById('trxId').value
+            };
+
+            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+                .then(function(response) {
+                    alert('Payment details submitted successfully! We will verify and process your order soon.');
+                    closePaymentModal();
+                    btn.innerText = "Submit Payment Details";
+                    btn.disabled = false;
+                }, function(error) {
+                    alert('Failed to send details. Error: ' + JSON.stringify(error));
+                    btn.innerText = "Submit Payment Details";
+                    btn.disabled = false;
+                });
+        });
     </script>
 </body>
 </html>

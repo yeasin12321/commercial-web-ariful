@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog & Videos — YourBrand</title>
+    <title>Blog & Videos — Jinis Kini</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -32,7 +32,7 @@
             <a href="index.html" class="logo">
                 <svg width="180" height="45" viewBox="0 0 180 45" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="180" height="45" rx="8" fill="url(#logo-grad)"/>
-                    <text x="16" y="30" font-family="Inter" font-weight="800" font-size="20" fill="white">YourBrand</text>
+                    <text x="16" y="30" font-family="Inter" font-weight="800" font-size="20" fill="white">Jinis Kini</text>
                     <text x="116" y="16" font-family="Inter" font-weight="600" font-size="7" fill="#a78bfa">PREMIUM</text>
                     <text x="116" y="30" font-family="Inter" font-weight="400" font-size="9" fill="#94a3b8">SUBSCRIPTIONS</text>
                     <defs><linearGradient id="logo-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#4f46e5"/></linearGradient></defs>
@@ -46,7 +46,8 @@
             </div>
             <div class="nav-right">
                 <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
-                <button class="lang-toggle">EN</button>
+                <!-- Language Button Updated -->
+                <button class="lang-toggle" id="langBtn" onclick="toggleLanguage()">EN</button>
                 <a href="login.html" class="btn-login"><i class="fas fa-user"></i> Login</a>
                 <div class="hamburger" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></div>
             </div>
@@ -85,7 +86,7 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-bottom" style="border-top:none; padding-top:40px;">
-                <p class="copyright">&copy; 2026 YourBrand. All rights reserved</p>
+                <p class="copyright">&copy; 2026 Jinis Kini. All rights reserved</p>
             </div>
         </div>
     </footer>
@@ -94,10 +95,22 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
+    <!-- Google Translate Element (Hidden) -->
+    <div id="google_translate_element" style="display:none;"></div>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en', 
+                includedLanguages: 'en,bn', 
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
     <script>
         // ═══════ YOUR GOOGLE SHEET API URL FOR BLOGS ═══════
-        // এখানে আপনার SheetDB API লিংক দিন। 
-        // আপনি চাইলে একই API এ ?sheet=blog যুক্ত করে অন্য ট্যাব থেকে ডেটা আনতে পারেন।
         const BLOG_SHEET_API = 'https://sheetdb.io/api/v1/yiauoepfjnnog';
 
         let blogPosts = [];
@@ -116,6 +129,29 @@
             document.getElementById('backToTop').style.display = window.scrollY > 300 ? 'flex' : 'none';
         });
 
+        // ── Translation Toggle Logic ──
+        let isBangla = false;
+        function toggleLanguage() {
+            let selectField = document.querySelector(".goog-te-combo");
+            let langBtn = document.getElementById('langBtn');
+            
+            if (selectField) {
+                if (!isBangla) {
+                    selectField.value = "bn";
+                    selectField.dispatchEvent(new Event("change"));
+                    langBtn.innerText = "BN";
+                    isBangla = true;
+                } else {
+                    selectField.value = "en";
+                    selectField.dispatchEvent(new Event("change"));
+                    langBtn.innerText = "EN";
+                    isBangla = false;
+                }
+            } else {
+                console.log("Google Translate is still loading...");
+            }
+        }
+
         // YouTube link convert into Embed link
         function getEmbedUrl(url) {
             if (!url) return '';
@@ -130,7 +166,7 @@
                 if (queryPosition != -1) id = id.substring(0, queryPosition);
                 return `https://www.youtube.com/embed/${id}`;
             }
-            return url; // Fallback for other video platforms
+            return url; 
         }
 
         async function loadBlogData() {
@@ -146,7 +182,6 @@
                 blogPosts = getFallbackBlogs();
             }
 
-            // Extract categories dynamically
             blogCategories = new Set(blogPosts.map(post => post.category).filter(c => c));
             renderFilters();
             renderBlog(blogPosts);
@@ -173,7 +208,6 @@
                 const icons = ['📘','▶️','⚔️','🎬','🎨','🧠'];
                 let mediaHtml = '';
 
-                // Check if video link exists in the sheet
                 if (post.video_link && post.video_link.trim() !== '') {
                     const embedUrl = getEmbedUrl(post.video_link);
                     mediaHtml = `
@@ -182,7 +216,6 @@
                         </div>
                     `;
                 } else {
-                    // Fallback to normal image/icon if no video link
                     mediaHtml = `
                         <div class="blog-img" style="position:relative; height:200px; display:flex; align-items:center; justify-content:center; background:var(--bg-secondary); border-radius:var(--radius) var(--radius) 0 0;">
                             <span style="font-size:60px;opacity:0.3">${icons[i % icons.length]}</span>
@@ -215,7 +248,6 @@
             else renderBlog(blogPosts.filter(p => p.category === category));
         }
 
-        // Fallback data structure showing how your sheet should look
         function getFallbackBlogs() {
             return [
                 {
@@ -223,14 +255,14 @@
                     title: "How to activate Canva Pro properly",
                     excerpt: "A step-by-step video guide on joining our Canva Pro team and using premium features.",
                     date: "Apr 05, 2026",
-                    video_link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" // Example YT Link
+                    video_link: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
                 },
                 {
                     category: "Software Tips",
                     title: "Adobe CC 2026 New Features",
                     excerpt: "Checkout the latest AI tools introduced in the new Adobe Creative Cloud update.",
                     date: "Apr 02, 2026",
-                    video_link: "" // No video, will show generic icon
+                    video_link: "" 
                 }
             ];
         }
