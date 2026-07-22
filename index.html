@@ -5,21 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-bn="জিনিস কিনি — বাংলাদেশের প্রিমিয়াম ডিজিটাল সাবস্ক্রিপশন" data-en="Jinis Kini — Premium Digital Subscriptions in Bangladesh">জিনিস কিনি — বাংলাদেশের প্রিমিয়াম ডিজিটাল সাবস্ক্রিপশন</title>
     
-    <!-- ══ FAVICON UPDATE ══ -->
+    <!-- ══ FAVICON ══ -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
-        /* ══ PREMIUM GOLD TEXT COLOR FOR 'JINIS KINI' ══ */
-        .premium-text {
-            background: linear-gradient(90deg, #f59e0b, #fbbf24, #fcd34d);
+        /* ══ HERO SECTION CUSTOM STYLES (MATCHING IMAGE) ══ */
+        .hero { text-align: center; padding: 100px 0 80px; }
+        
+        .hero-badge-clean {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: rgba(255, 42, 95, 0.05);
+            border: 1px solid rgba(255, 42, 95, 0.2);
+            border-radius: 100px;
+            color: #ff2a5f;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            letter-spacing: 0.5px;
+        }
+        
+        .hero-title-main {
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 800;
+            line-height: 1.4;
+            margin-bottom: 24px;
+            color: var(--text-primary);
+        }
+        
+        .highlight-red {
+            background: linear-gradient(90deg, #ff4d6d, #ff758c);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-weight: 900;
             display: inline-block;
-            filter: drop-shadow(0 4px 15px rgba(245, 158, 11, 0.25));
+        }
+        
+        .hero-subtitle-clean {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 36px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
     </style>
 </head>
@@ -65,26 +98,28 @@
     <!-- ═══ HERO ═══ -->
     <section class="hero">
         <div class="container">
-            <div class="hero-badge">
-                <span data-bn="বাংলাদেশের বিশ্বস্ত সাবস্ক্রিপশন স্টোর" data-en="Bangladesh's Trusted Subscription Store">বাংলাদেশের বিশ্বস্ত সাবস্ক্রিপশন স্টোর</span>
+            <!-- IMAGE STYLE BADGE -->
+            <div class="hero-badge-clean">
+                <i class="fas fa-sparkles"></i>
+                <span data-bn="বাংলাদেশের #১ প্রিমিয়াম সাবস্ক্রিপশন স্টোর" data-en="Bangladesh's #1 Premium Subscription Store">বাংলাদেশের #১ প্রিমিয়াম সাবস্ক্রিপশন স্টোর</span>
             </div>
             
-            <!-- ══ HERO TITLE (UPDATED) ══ -->
-            <h1 class="hero-title" data-bn="দাম না দেখে মান দেখি,<br>আফটার সেল সার্ভিস নিয়ে প্রিমিয়াম <span class='premium-text'>জিনিস কিনি</span>" data-en="Quality over price,<br>Premium products with best after-sales service: <span class='premium-text'>Jinis Kini</span>">
+            <!-- ══ ONLY 'JINIS KINI' IS HIGHLIGHTED NOW ══ -->
+            <h1 class="hero-title-main" data-bn="দাম না দেখে মান দেখি,<br>আফটার সেল সার্ভিস নিয়ে প্রিমিয়াম <span class='highlight-red'>জিনিস কিনি</span>" data-en="Quality over price,<br>Premium after-sales service at <span class='highlight-red'>Jinis Kini</span>">
                 দাম না দেখে মান দেখি,<br>
-                আফটার সেল সার্ভিস নিয়ে প্রিমিয়াম <span class="premium-text">জিনিস কিনি</span>
+                আফটার সেল সার্ভিস নিয়ে প্রিমিয়াম <span class="highlight-red">জিনিস কিনি</span>
             </h1>
             
-            <!-- ══ HERO SUBTITLE (UPDATED) ══ -->
-            <p class="hero-subtitle" data-bn="প্রিমিয়াম সফটওয়্যার, প্রফেশনালদের আস্থার নাম।" data-en="Premium software, trusted by professionals.">
-                প্রিমিয়াম সফটওয়্যার, প্রফেশনালদের আস্থার নাম।
+            <!-- IMAGE STYLE SUBTITLE (2 Lines) -->
+            <p class="hero-subtitle-clean" data-bn="Adobe, AI Tools, Office, স্ট্রিমিং ও প্রিমিয়াম ডিজিটাল সেবা<br>নিরাপদ অ্যাক্টিভেশন, দ্রুত ডেলিভারি ও সম্পূর্ণ ওয়ারেন্টি সহ।" data-en="Adobe, AI Tools, Office, Streaming & Premium Digital Services<br>Secure activation, fast delivery & full warranty.">
+                Adobe, AI Tools, Office, স্ট্রিমিং ও প্রিমিয়াম ডিজিটাল সেবা<br>নিরাপদ অ্যাক্টিভেশন, দ্রুত ডেলিভারি ও সম্পূর্ণ ওয়ারেন্টি সহ।
             </p>
 
             <a href="products.html" class="btn-primary" data-bn="প্রোডাক্টগুলো দেখুন <i class='fas fa-arrow-right'></i>" data-en="Explore Products <i class='fas fa-arrow-right'></i>">
                 প্রোডাক্টগুলো দেখুন <i class="fas fa-arrow-right"></i>
             </a>
             
-            <div class="hero-stats">
+            <div class="hero-stats" style="margin-top: 40px;">
                 <div class="stat"><span class="stat-num counter" data-target="5" data-suffix="+">0</span><span class="stat-label" data-bn="বছরের অভিজ্ঞতা" data-en="Years Experience">বছরের অভিজ্ঞতা</span></div>
                 <div class="stat"><span class="stat-num counter" data-target="5000" data-suffix="+">0</span><span class="stat-label" data-bn="সন্তুষ্ট কাস্টমার" data-en="Happy Customers">সন্তুষ্ট কাস্টমার</span></div>
                 <div class="stat"><span class="stat-num counter" data-target="99" data-suffix="%">0</span><span class="stat-label" data-bn="ডেলিভারি রেট" data-en="Delivery Rate">ডেলিভারি রেট</span></div>
@@ -96,10 +131,9 @@
     <!-- ═══ CATEGORIES ═══ -->
     <section class="categories-section">
         <div class="container">
-            <h2 class="section-title" data-bn="ব্রাউজ করুন <span class='gradient-text'>ক্যাটাগরি</span> অনুযায়ী" data-en="Browse by <span class='gradient-text'>Category</span>">ব্রাউজ করুন <span class="gradient-text">ক্যাটাগরি</span> অনুযায়ী</h2>
+            <h2 class="section-title" data-bn="ব্রাউজ করুন <span class='highlight-red'>ক্যাটাগরি</span> অনুযায়ী" data-en="Browse by <span class='highlight-red'>Category</span>">ব্রাউজ করুন <span class="highlight-red">ক্যাটাগরি</span> অনুযায়ী</h2>
             <p class="section-subtitle" data-bn="আপনার প্রয়োজনীয় সঠিক প্রোডাক্টটি বেছে নিন" data-en="Find the right product for every need">আপনার প্রয়োজনীয় সঠিক প্রোডাক্টটি বেছে নিন</p>
             
-            <!-- ══ FIXED CATEGORY GRID ══ -->
             <div class="categories-grid" id="categoriesGrid">
                 <a href="products.html?cat=Adobe" class="category-card" data-category="Adobe">
                     <div class="cat-icon"><i class="fab fa-adobe"></i></div>
@@ -182,7 +216,7 @@
     <!-- ═══ WHY CHOOSE US ═══ -->
     <section class="why-us">
         <div class="container">
-            <h2 class="section-title" data-bn="কেন <span class='gradient-text'>জিনিস কিনি</span> বেছে নেবেন?" data-en="Why Choose <span class='gradient-text'>Jinis Kini</span>">কেন <span class="gradient-text">জিনিস কিনি</span> বেছে নেবেন?</h2>
+            <h2 class="section-title" data-bn="কেন <span class='highlight-red'>জিনিস কিনি</span> বেছে নেবেন?" data-en="Why Choose <span class='highlight-red'>Jinis Kini</span>">কেন <span class="highlight-red">জিনিস কিনি</span> বেছে নেবেন?</h2>
             <p class="section-subtitle" data-bn="হাজারো কাস্টমারের আস্থার নাম — ১০০% নিরাপদ এবং নির্ভরযোগ্য সার্ভিস।" data-en="Trusted by thousands of customers — 100% secure and authentic service.">হাজারো কাস্টমারের আস্থার নাম — ১০০% নিরাপদ এবং নির্ভরযোগ্য সার্ভিস।</p>
             <div class="features-grid">
                 <div class="feature-card"><div class="feature-icon"><i class="fas fa-check-circle"></i></div><h3 data-bn="১০০% অফিসিয়াল অ্যাক্সেস" data-en="100% Official Access">১০০% অফিসিয়াল অ্যাক্সেস</h3><p data-bn="শুধুমাত্র আসল সাবস্ক্রিপশন — কোনো ফেক অ্যাকাউন্ট নেই।" data-en="Genuine subscriptions only — never fake or unauthorized accounts.">শুধুমাত্র আসল সাবস্ক্রিপশন — কোনো ফেক অ্যাকাউন্ট নেই।</p></div>
