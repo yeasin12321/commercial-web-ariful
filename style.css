@@ -2404,3 +2404,17 @@ body::after {
         max-height: 220px !important;
     }
 }
+.nav-brand-logo {
+    height: 100px; /* আপনার পছন্দমতো সাইজ বাড়াতে বা কমাতে পারেন (যেমন: 50px, 60px) */
+    width: auto;
+    max-width: 220px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+/* মোবাইল ভার্সনের জন্য একটু ছোট রাখা ভালো */
+@media (max-width: 768px) {
+    .nav-brand-logo {
+        height: 45px;
+    }
+}
