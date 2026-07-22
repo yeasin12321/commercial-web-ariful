@@ -1,18 +1,6 @@
-<svg width="360" height="90" viewBox="0 0 360 90" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <style>
-      .logo-text {
-        font-family: 'Arial Rounded MT Bold', 'Montserrat', 'Poppins', sans-serif;
-        font-size: 42px;
-        font-weight: 900;
-        fill: #e60000;
-        letter-spacing: -1px;
-      }
-    </style>
-  </defs>
-
-  <!-- JK Shopping Bag Icon -->
-  <g transform="translate(10, 10)">
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- JK Shopping Bag Icon Centered -->
+  <g transform="translate(7, 15)">
     <!-- Bag Handle -->
     <path d="M 28 18 C 28 -2, 58 -2, 58 18" fill="none" stroke="#e60000" stroke-width="5" stroke-linecap="round"/>
     
@@ -34,7 +22,4 @@
     <!-- Bottom arm -->
     <path d="M 56 45 L 76 72" fill="none" stroke="#e60000" stroke-width="12" stroke-linecap="butt"/>
   </g>
-
-  <!-- 'jinis kini' Text -->
-  <text x="110" y="65" class="logo-text">jinis kini</text>
 </svg>

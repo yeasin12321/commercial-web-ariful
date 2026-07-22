@@ -4,9 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-bn="জিনিস কিনি — বাংলাদেশের প্রিমিয়াম ডিজিটাল সাবস্ক্রিপশন" data-en="Jinis Kini — Premium Digital Subscriptions in Bangladesh">জিনিস কিনি — বাংলাদেশের প্রিমিয়াম ডিজিটাল সাবস্ক্রিপশন</title>
-    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    
+    <!-- ══ FAVICON UPDATE ══ -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* ══ PREMIUM GOLD TEXT COLOR FOR 'JINIS KINI' ══ */
+        .premium-text {
+            background: linear-gradient(90deg, #f59e0b, #fbbf24, #fcd34d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+            display: inline-block;
+            filter: drop-shadow(0 4px 15px rgba(245, 158, 11, 0.25));
+        }
+    </style>
 </head>
 <body>
     <!-- ═══ NAVBAR ═══ -->
@@ -53,13 +68,18 @@
             <div class="hero-badge">
                 <span data-bn="বাংলাদেশের বিশ্বস্ত সাবস্ক্রিপশন স্টোর" data-en="Bangladesh's Trusted Subscription Store">বাংলাদেশের বিশ্বস্ত সাবস্ক্রিপশন স্টোর</span>
             </div>
-            <h1 class="hero-title" data-bn="প্রিমিয়াম সফটওয়্যার,<br><span class='gradient-text'>প্রফেশনালদের আস্থার নাম</span>" data-en="Premium Software,<br><span class='gradient-text'>Trusted by Professionals</span>">
-                প্রিমিয়াম সফটওয়্যার,<br>
-                <span class="gradient-text">প্রফেশনালদের আস্থার নাম</span>
+            
+            <!-- ══ HERO TITLE (UPDATED) ══ -->
+            <h1 class="hero-title" data-bn="দাম না দেখে মান দেখি,<br>আফটার সেল সার্ভিস নিয়ে প্রিমিয়াম <span class='premium-text'>জিনিস কিনি</span>" data-en="Quality over price,<br>Premium products with best after-sales service: <span class='premium-text'>Jinis Kini</span>">
+                দাম না দেখে মান দেখি,<br>
+                আফটার সেল সার্ভিস নিয়ে প্রিমিয়াম <span class="premium-text">জিনিস কিনি</span>
             </h1>
-            <p class="hero-subtitle" data-bn="অ্যাডোবি, এআই টুলস, অফিস, স্ট্রিমিং সহ যাবতীয় প্রিমিয়াম ডিজিটাল সাবস্ক্রিপশন পাচ্ছেন সিকিউর অ্যাক্টিভেশন, ফাস্ট ডেলিভারি এবং ফুল ওয়ারেন্টি সহ।" data-en="Adobe, AI Tools, Office, Streaming & Premium Digital Services with Secure Activation, Fast Delivery & Full Warranty.">
-                অ্যাডোবি, এআই টুলস, অফিস, স্ট্রিমিং সহ যাবতীয় প্রিমিয়াম ডিজিটাল সাবস্ক্রিপশন পাচ্ছেন সিকিউর অ্যাক্টিভেশন, ফাস্ট ডেলিভারি এবং ফুল ওয়ারেন্টি সহ।
+            
+            <!-- ══ HERO SUBTITLE (UPDATED) ══ -->
+            <p class="hero-subtitle" data-bn="প্রিমিয়াম সফটওয়্যার, প্রফেশনালদের আস্থার নাম।" data-en="Premium software, trusted by professionals.">
+                প্রিমিয়াম সফটওয়্যার, প্রফেশনালদের আস্থার নাম।
             </p>
+
             <a href="products.html" class="btn-primary" data-bn="প্রোডাক্টগুলো দেখুন <i class='fas fa-arrow-right'></i>" data-en="Explore Products <i class='fas fa-arrow-right'></i>">
                 প্রোডাক্টগুলো দেখুন <i class="fas fa-arrow-right"></i>
             </a>
@@ -248,7 +268,8 @@
     <button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
 
     <script>
-        const SHEET_API = 'https://sheetdb.io/api/v1/n2j17tqzv1a23';
+        const SHEET_API = 'https://script.google.com/macros/s/AKfycbxcft7itS_JR1uVlYL7U7tzc8zp0AJt6UOH0BI4RRq5vRILQtE2gZHPDT1SzJ0T2vLI/exec';
+        
         let allProducts = [];
 
         function toggleTheme() {
@@ -305,13 +326,20 @@
             setLanguage(newLang);
         }
 
-        // ── Load Products ──
+        // ── Load Products (CORS Fixed) ──
         async function loadData() {
             try {
-                const res = await fetch(SHEET_API);
-                allProducts = await res.json();
+                const res = await fetch(SHEET_API, { 
+                    redirect: "follow",
+                    headers: {
+                        "Content-Type": "text/plain;charset=utf-8",
+                    }
+                });
+                const data = await res.json();
+                
+                allProducts = data.filter(p => p.name && p.name.trim() !== '');
             } catch(e) {
-                console.log('API Error');
+                console.log('API Error: ', e);
             }
             
             renderPageCategories();
@@ -319,7 +347,6 @@
         }
 
         function renderPageCategories() {
-            // Count products per category and update the hardcoded HTML
             const cards = document.querySelectorAll('.category-card');
             cards.forEach(card => {
                 const catName = card.getAttribute('data-category');
