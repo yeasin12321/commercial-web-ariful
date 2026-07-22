@@ -1,35 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy & Terms — Jinis Kini</title>
+    <title data-bn="প্রাইভেসি পলিসি — জিনিস কিনি" data-en="Privacy Policy — Jinis Kini">প্রাইভেসি পলিসি — জিনিস কিনি</title>
+    <!-- ═══ Browser Tab Icon (Favicon) ═══ -->
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
     <nav class="navbar">
         <div class="container">
+            <!-- ═══ NAVBAR LOGO ═══ -->
             <a href="index.html" class="logo">
-                <svg width="180" height="45" viewBox="0 0 180 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="180" height="45" rx="8" fill="url(#logo-grad)"/>
-                    <text x="16" y="30" font-family="Inter" font-weight="800" font-size="20" fill="white">Jinis Kini</text>
-                    <text x="116" y="16" font-family="Inter" font-weight="600" font-size="7" fill="#a78bfa">PREMIUM</text>
-                    <text x="116" y="30" font-family="Inter" font-weight="400" font-size="9" fill="#94a3b8">SUBSCRIPTIONS</text>
-                    <defs><linearGradient id="logo-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#4f46e5"/></linearGradient></defs>
-                </svg>
+                <img src="logo.svg" alt="Jinis Kini" style="height: 40px; width: auto; object-fit: contain;">
             </a>
             <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="products.html">Products</a>
-                <a href="blog.html">Blog</a>
-                <a href="support.html">Help & Support</a>
+                <a href="index.html" data-bn="হোম" data-en="Home">হোম</a>
+                <a href="products.html" data-bn="প্রোডাক্টস" data-en="Products">প্রোডাক্টস</a>
+                <a href="blog.html" data-bn="ব্লগ" data-en="Blog">ব্লগ</a>
+                <a href="support.html" data-bn="হেল্প ও সাপোর্ট" data-en="Help & Support">হেল্প ও সাপোর্ট</a>
             </div>
             <div class="nav-right">
                 <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
-                <button class="lang-toggle">EN</button>
-                <a href="login.html" class="btn-login"><i class="fas fa-user"></i> Login</a>
+                
+                <!-- LANGUAGE TOGGLE BUTTON -->
+                <div class="lang-switch-wrapper" onclick="toggleLanguage()">
+                    <div class="lang-option en-opt">EN</div>
+                    <div class="lang-option bn-opt active">বাংলা</div>
+                </div>
+
+                <a href="login.html" class="btn-login"><i class="fas fa-user"></i> <span data-bn="লগইন" data-en="Login">লগইন</span></a>
                 <div class="hamburger" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></div>
             </div>
         </div>
@@ -38,137 +41,184 @@
     <section class="page-header">
         <div class="container">
             <div class="breadcrumb">
-                <a href="index.html">Home</a>
+                <a href="index.html" data-bn="হোম" data-en="Home">হোম</a>
                 <i class="fas fa-chevron-right"></i>
-                <span class="current">Privacy Policy</span>
+                <span class="current" data-bn="প্রাইভেসি পলিসি" data-en="Privacy Policy">প্রাইভেসি পলিসি</span>
             </div>
-            <h1>Policy</h1>
-            <p>At Jinis Kini.com, we maintain clear policies to ensure a secure and transparent shopping experience.</p>
+            <h1 data-bn="প্রাইভেসি পলিসি" data-en="Privacy Policy">প্রাইভেসি পলিসি</h1>
+            <p data-bn="আপনার ব্যক্তিগত তথ্যের নিরাপত্তা আমাদের সর্বোচ্চ অগ্রাধিকার" data-en="The security of your personal information is our top priority">আপনার ব্যক্তিগত তথ্যের নিরাপত্তা আমাদের সর্বোচ্চ অগ্রাধিকার</p>
         </div>
     </section>
 
-    <section class="policy-content" id="terms">
+    <section class="policy-content" id="privacy">
         <div class="container" style="max-width:800px;margin:0 auto;padding:40px 0">
-            <h2>Terms and Conditions</h2>
-            <p>Please read these terms before placing an order.</p>
+            
+            <div class="content-block" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius); padding: 32px; backdrop-filter: blur(12px); box-shadow: var(--shadow-card);">
+                
+                <h2 style="font-size: 24px; font-weight: 800; margin-bottom: 16px; color: var(--accent-primary);" data-bn="আমাদের প্রাইভেসি প্রতিশ্রুতি" data-en="Our Privacy Commitment">আমাদের প্রাইভেসি প্রতিশ্রুতি</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 24px; line-height: 1.7; font-size: 15px;" data-bn="জিনিস কিনি (Jinis Kini) আপনার ব্যক্তিগত তথ্যের গোপনীয়তা ও নিরাপত্তাকে সম্মান করে। আমাদের ওয়েবসাইট ব্যবহার করার সময় আমরা আপনার কোন কোন তথ্য সংগ্রহ করি এবং কীভাবে তা সুরক্ষিত রাখি, তার বিস্তারিত বিবরণ নিচে দেওয়া হলো।" data-en="Jinis Kini respects the privacy and security of your personal information. Below is a detailed description of what information we collect when you use our website and how we keep it secure.">জিনিস কিনি (Jinis Kini) আপনার ব্যক্তিগত তথ্যের গোপনীয়তা ও নিরাপত্তাকে সম্মান করে। আমাদের ওয়েবসাইট ব্যবহার করার সময় আমরা আপনার কোন কোন তথ্য সংগ্রহ করি এবং কীভাবে তা সুরক্ষিত রাখি, তার বিস্তারিত বিবরণ নিচে দেওয়া হলো।</p>
 
-            <h3>1. Product Delivery</h3>
-            <ul>
-                <li>All products are digital and delivered via Email / WhatsApp / Messenger</li>
-                <li>Providing correct contact information is customer's responsibility</li>
-                <li>We are not responsible for delivery failure due to incorrect info</li>
-                <li>Delivery is typically completed within 2–24 hours</li>
-            </ul>
+                <h3 style="font-size: 18px; font-weight: 700; margin: 24px 0 12px;" data-bn="১. আমরা যেসব তথ্য সংগ্রহ করি" data-en="1. Information We Collect">১. আমরা যেসব তথ্য সংগ্রহ করি</h3>
+                <ul style="padding-left: 20px; list-style: none;">
+                    <li style="margin-bottom: 10px; color: var(--text-secondary); position: relative; padding-left: 16px;">
+                        <span style="position: absolute; left: 0; color: var(--accent-primary);">•</span>
+                        <span data-bn="নাম, ইমেইল অ্যাড্রেস এবং হোয়াটসঅ্যাপ/ফোন নম্বর (অর্ডার এবং সাপোর্টের জন্য)।" data-en="Name, email address, and WhatsApp/phone number (for orders and support).">নাম, ইমেইল অ্যাড্রেস এবং হোয়াটসঅ্যাপ/ফোন নম্বর (অর্ডার এবং সাপোর্টের জন্য)।</span>
+                    </li>
+                    <li style="margin-bottom: 10px; color: var(--text-secondary); position: relative; padding-left: 16px;">
+                        <span style="position: absolute; left: 0; color: var(--accent-primary);">•</span>
+                        <span data-bn="ট্রানজেকশন বা পেমেন্টের আংশিক তথ্য (যেমন: TrxID বা প্রেরকের নম্বর), যা অর্ডার কনফার্ম করতে প্রয়োজন হয়।" data-en="Partial transaction or payment details (e.g., TrxID or sender number) required to confirm orders.">ট্রানজেকশন বা পেমেন্টের আংশিক তথ্য (যেমন: TrxID বা প্রেরকের নম্বর), যা অর্ডার কনফার্ম করতে প্রয়োজন হয়।</span>
+                    </li>
+                </ul>
 
-            <h3>2. Warranty Policy</h3>
-            <ul>
-                <li>All subscriptions include a defined warranty period</li>
-                <li>Issues will be fixed or replaced</li>
-                <li>Backup account may be provided if necessary</li>
-                <li>Warranty is not applicable after expiry</li>
-            </ul>
+                <h3 style="font-size: 18px; font-weight: 700; margin: 24px 0 12px;" data-bn="২. তথ্যের ব্যবহার" data-en="2. How We Use Your Information">২. তথ্যের ব্যবহার</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 16px; line-height: 1.7; font-size: 15px;" data-bn="আপনার প্রদত্ত তথ্যগুলো শুধুমাত্র নিচের কাজগুলোতে ব্যবহার করা হয়:" data-en="The information you provide is used strictly for the following purposes:">আপনার প্রদত্ত তথ্যগুলো শুধুমাত্র নিচের কাজগুলোতে ব্যবহার করা হয়:</p>
+                <ul style="padding-left: 20px; list-style: none;">
+                    <li style="margin-bottom: 10px; color: var(--text-secondary); position: relative; padding-left: 16px;">
+                        <span style="position: absolute; left: 0; color: var(--accent-primary);">•</span>
+                        <span data-bn="প্রোডাক্ট ডেলিভারি এবং অ্যাকাউন্ট অ্যাক্টিভেশন সম্পন্ন করতে।" data-en="To complete product delivery and account activation.">প্রোডাক্ট ডেলিভারি এবং অ্যাকাউন্ট অ্যাক্টিভেশন সম্পন্ন করতে।</span>
+                    </li>
+                    <li style="margin-bottom: 10px; color: var(--text-secondary); position: relative; padding-left: 16px;">
+                        <span style="position: absolute; left: 0; color: var(--accent-primary);">•</span>
+                        <span data-bn="আপনার অর্ডারের আপডেট এবং ওয়ারেন্টি সাপোর্ট প্রদান করতে।" data-en="To provide order updates and warranty support.">আপনার অর্ডারের আপডেট এবং ওয়ারেন্টি সাপোর্ট প্রদান করতে।</span>
+                    </li>
+                    <li style="margin-bottom: 10px; color: var(--text-secondary); position: relative; padding-left: 16px;">
+                        <span style="position: absolute; left: 0; color: var(--accent-primary);">•</span>
+                        <span data-bn="প্রয়োজনীয় নোটিশ এবং অফার সম্পর্কে আপনাকে জানাতে।" data-en="To notify you about important notices and offers.">প্রয়োজনীয় নোটিশ এবং অফার সম্পর্কে আপনাকে জানাতে।</span>
+                    </li>
+                </ul>
 
-            <h3>3. Usage Policy</h3>
-            <ul>
-                <li>Intended for personal use only</li>
-                <li>Changing account credentials may void warranty</li>
-                <li>Unauthorized usage may result in service termination</li>
-            </ul>
+                <h3 style="font-size: 18px; font-weight: 700; margin: 24px 0 12px;" data-bn="৩. ডেটা সুরক্ষা ও নিরাপত্তা" data-en="3. Data Security & Protection">৩. ডেটা সুরক্ষা ও নিরাপত্তা</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 16px; line-height: 1.7; font-size: 15px;" data-bn="আপনার ডেটা সুরক্ষিত রাখা আমাদের দায়িত্ব। পেমেন্ট এবং অর্ডারের তথ্য আদান-প্রদানে আমরা সুরক্ষিত এনক্রিপশন পদ্ধতি ব্যবহার করি। আমরা কোনোভাবেই আপনার ব্যাংক বা কার্ডের পাসওয়ার্ড/পিন সংরক্ষণ করি না।" data-en="Protecting your data is our responsibility. We use secure encryption methods for transmitting payment and order information. We never store your bank or card passwords/PINs.">আপনার ডেটা সুরক্ষিত রাখা আমাদের দায়িত্ব। পেমেন্ট এবং অর্ডারের তথ্য আদান-প্রদানে আমরা সুরক্ষিত এনক্রিপশন পদ্ধতি ব্যবহার করি। আমরা কোনোভাবেই আপনার ব্যাংক বা কার্ডের পাসওয়ার্ড/পিন সংরক্ষণ করি না।</p>
 
-            <h3>4. Payment Policy</h3>
-            <ul>
-                <li>Accepted methods: bKash, Nagad, Bank Transfer, Payment Gateway</li>
-                <li>Orders are processed only after full payment confirmation</li>
-                <li>Fraudulent transactions will be cancelled</li>
-            </ul>
+                <h3 style="font-size: 18px; font-weight: 700; margin: 24px 0 12px;" data-bn="৪. থার্ড-পার্টি শেয়ারিং" data-en="4. Third-Party Sharing">৪. থার্ড-পার্টি শেয়ারিং</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 16px; line-height: 1.7; font-size: 15px;" data-bn="জিনিস কিনি কোনো অবস্থাতেই আপনার ব্যক্তিগত ডেটা কোনো তৃতীয় পক্ষের কাছে বিক্রি বা শেয়ার করে না। শুধুমাত্র পেমেন্ট গেটওয়ে বা গুগল শিট এর মতো নির্ভরযোগ্য সার্ভিস প্রোভাইডারদের সাথে কাজের সুবিধার্থে ডেটা প্রসেস করা হয়, যারা কঠোর প্রাইভেসি পলিসি মেনে চলে।" data-en="Jinis Kini does not sell or share your personal data with third parties under any circumstances. Data is only processed through reliable service providers like payment gateways or Google Sheets, which strictly adhere to privacy policies.">জিনিস কিনি কোনো অবস্থাতেই আপনার ব্যক্তিগত ডেটা কোনো তৃতীয় পক্ষের কাছে বিক্রি বা শেয়ার করে না। শুধুমাত্র পেমেন্ট গেটওয়ে বা গুগল শিট এর মতো নির্ভরযোগ্য সার্ভিস প্রোভাইডারদের সাথে কাজের সুবিধার্থে ডেটা প্রসেস করা হয়, যারা কঠোর প্রাইভেসি পলিসি মেনে চলে।</p>
 
-            <h3>5. Refund & Replacement</h3>
-            <ul>
-                <li>Refunds are subject to conditions</li>
-                <li>If unresolved → Partial Refund may be issued</li>
-                <li>Refer to Refund Policy for details</li>
-            </ul>
+                <h3 style="font-size: 18px; font-weight: 700; margin: 24px 0 12px;" data-bn="৫. কুকিজ (Cookies) ব্যবহার" data-en="5. Use of Cookies">৫. কুকিজ (Cookies) ব্যবহার</h3>
+                <p style="color: var(--text-secondary); margin-bottom: 16px; line-height: 1.7; font-size: 15px;" data-bn="আপনাকে একটি নিরবচ্ছিন্ন ব্রাউজিং অভিজ্ঞতা দিতে (যেমন: ডার্ক মোড এবং ভাষা নির্বাচন মনে রাখা) আমরা ওয়েবসাইটের লোকাল স্টোরেজ বা বেসিক কুকিজ ব্যবহার করি। এটি কোনো ব্যক্তিগত সংবেদনশীল তথ্য সংগ্রহ করে না।" data-en="We use local storage or basic cookies to provide a seamless browsing experience (e.g., remembering Dark Mode and language preferences). This does not collect any sensitive personal information.">আপনাকে একটি নিরবচ্ছিন্ন ব্রাউজিং অভিজ্ঞতা দিতে (যেমন: ডার্ক মোড এবং ভাষা নির্বাচন মনে রাখা) আমরা ওয়েবসাইটের লোকাল স্টোরেজ বা বেসিক কুকিজ ব্যবহার করি। এটি কোনো ব্যক্তিগত সংবেদনশীল তথ্য সংগ্রহ করে না।</p>
 
-            <h3>6. Support</h3>
-            <ul>
-                <li>Support available via WhatsApp / Messenger</li>
-                <li>Typical response time: 24–48 hours</li>
-            </ul>
+                <div style="margin-top: 40px; padding: 20px; background: rgba(255, 42, 95, 0.05); border-radius: var(--radius-sm); border: 1px solid rgba(255, 42, 95, 0.2);">
+                    <h4 style="font-size: 16px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px;" data-bn="প্রশ্ন আছে?" data-en="Have Questions?">প্রশ্ন আছে?</h4>
+                    <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 12px;" data-bn="আমাদের প্রাইভেসি পলিসি নিয়ে কোনো প্রশ্ন থাকলে নির্দ্বিধায় যোগাযোগ করুন।" data-en="If you have any questions regarding our Privacy Policy, feel free to contact us.">আমাদের প্রাইভেসি পলিসি নিয়ে কোনো প্রশ্ন থাকলে নির্দ্বিধায় যোগাযোগ করুন।</p>
+                    <a href="https://wa.me/01324214516" target="_blank" style="color: var(--whatsapp); font-weight: 600; font-size: 14px; text-decoration: none;"><i class="fab fa-whatsapp"></i> +8801324214516</a>
+                </div>
+            </div>
 
-            <h3>7. Account Security</h3>
-            <ul>
-                <li>Customers are responsible for account security</li>
-                <li>We are not liable for misuse</li>
-            </ul>
-            <p style="margin-top:32px;color:var(--text-muted)">Jinis Kini.com — a trusted premium subscription provider in Bangladesh</p>
-
-            <hr style="border-color:var(--border-color);margin:48px 0">
-
-            <h2 style="color:var(--accent-primary);font-size:28px">শর্তাবলী ও নীতিমালা</h2>
-            <p>আপনার কেনাকাটার অভিজ্ঞতা নিরাপদ ও স্বচ্ছ রাখতে আমরা কিছু নীতিমালা অনুসরণ করি।</p>
-
-            <h3>১. প্রোডাক্ট ডেলিভারি</h3>
-            <ul>
-                <li>আমাদের সকল প্রোডাক্ট ডিজিটাল, তাই Email / WhatsApp / Messenger এর মাধ্যমে ডেলিভারি করা হয়</li>
-                <li>সঠিক Email ও WhatsApp নাম্বার প্রদান করা কাস্টমারের দায়িত্ব</li>
-                <li>ভুল তথ্য দিলে ডেলিভারি ব্যর্থ হলে আমরা দায়ী থাকবো না</li>
-                <li>ডেলিভারি সাধারণত ২–২৪ ঘন্টার মধ্যে সম্পন্ন হয়</li>
-            </ul>
-
-            <h3>২. ওয়ারেন্টি নীতি</h3>
-            <ul>
-                <li>সকল সাবস্ক্রিপশনে নির্দিষ্ট সময়ের Warranty প্রদান করা হয়</li>
-                <li>সমস্যা হলে আগে Fix বা Replacement দেওয়া হবে</li>
-                <li>প্রয়োজনে Backup Account দেওয়া হতে পারে</li>
-                <li>Warranty শেষ হলে সার্ভিস প্রযোজ্য হবে না</li>
-            </ul>
-
-            <h3>৩. ব্যবহার শর্ত</h3>
-            <ul>
-                <li>শুধুমাত্র ব্যক্তিগত ব্যবহারের জন্য</li>
-                <li>Password / Account পরিবর্তন করলে Warranty বাতিল হতে পারে</li>
-                <li>Unauthorized ব্যবহার করলে সার্ভিস বন্ধ করা হতে পারে</li>
-            </ul>
-
-            <h3>৪. পেমেন্ট নীতি</h3>
-            <ul>
-                <li>bKash / Nagad / Bank Transfer / Payment Gateway গ্রহণযোগ্য</li>
-                <li>সম্পূর্ণ পেমেন্ট নিশ্চিত হওয়ার পরই অর্ডার প্রসেস করা হবে</li>
-                <li>কোনো Fraudulent transaction হলে অর্ডার বাতিল করা হবে</li>
-            </ul>
-
-            <h3>৫. রিফান্ড ও রিপ্লেসমেন্ট</h3>
-            <ul>
-                <li>Refund শুধুমাত্র নির্দিষ্ট শর্তে প্রযোজ্য</li>
-                <li>Fix/Replacement সম্ভব না হলে Partial Refund দেওয়া হবে</li>
-                <li>বিস্তারিত জানতে Refund Policy দেখুন</li>
-            </ul>
-
-            <h3>৬. সাপোর্ট</h3>
-            <ul>
-                <li>Support শুধুমাত্র WhatsApp / Messenger এর মাধ্যমে দেওয়া হয়</li>
-                <li>Response time সাধারণত ২৪–৪৮ ঘন্টা</li>
-            </ul>
-
-            <h3>৭. অ্যাকাউন্ট সিকিউরিটি</h3>
-            <ul>
-                <li>আপনার লগইন তথ্য নিরাপদ রাখা আপনার দায়িত্ব</li>
-                <li>ভুল ব্যবহারের কারণে সমস্যা হলে আমরা দায়ী থাকবো না</li>
-            </ul>
-            <p style="margin-top:32px;color:var(--text-muted)">Jinis Kini.com — বাংলাদেশের একটি trusted premium subscription platform</p>
         </div>
     </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <!-- ═══ FOOTER LOGO ═══ -->
+                    <img src="logo.svg" alt="Jinis Kini Logo" style="height: 45px; width: auto; margin-bottom: 16px; object-fit: contain;">
+                    
+                    <p data-bn="প্রিমিয়াম সফটওয়্যার, এআই টুলস এবং ডিজিটাল সাবস্ক্রিপশনের জন্য আপনার নির্ভরযোগ্য গন্তব্য।" data-en="Your trusted destination for premium software, AI tools and digital subscriptions.">প্রিমিয়াম সফটওয়্যার, এআই টুলস এবং ডিজিটাল সাবস্ক্রিপশনের জন্য আপনার নির্ভরযোগ্য গন্তব্য।</p>
+                    <p class="footer-address" data-bn="<i class='fas fa-location-dot'></i> বাংলাদেশ" data-en="<i class='fas fa-location-dot'></i> Bangladesh"><i class="fas fa-location-dot"></i> বাংলাদেশ</p>
+                    <p class="footer-tagline" data-bn="২০২৪ থেকে ৫০০০+ কাস্টমারের ভরসা" data-en="Trusted by 5000+ customers Since 2024">২০২৪ থেকে ৫০০০+ কাস্টমারের ভরসা</p>
+                </div>
+                <div class="footer-links">
+                    <h4 data-bn="কুইক লিংকস" data-en="Quick Links">কুইক লিংকস</h4>
+                    <ul>
+                        <li><a href="products.html" data-bn="সকল প্রোডাক্ট" data-en="All Products">সকল প্রোডাক্ট</a></li>
+                        <li><a href="blog.html" data-bn="ব্লগ" data-en="Blog">ব্লগ</a></li>
+                        <li><a href="support.html" data-bn="হেল্প ও সাপোর্ট" data-en="Help & Support">হেল্প ও সাপোর্ট</a></li>
+                        <li><a href="dashboard.html" data-bn="আমার অ্যাকাউন্ট" data-en="My Account">আমার অ্যাকাউন্ট</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4 data-bn="লিগ্যাল" data-en="Legal">লিগ্যাল</h4>
+                    <ul>
+                        <li><a href="privacy.html" data-bn="প্রাইভেসি পলিসি" data-en="Privacy Policy">প্রাইভেসি পলিসি</a></li>
+                        <li><a href="refund.html" data-bn="রিফান্ড পলিসি" data-en="Refund Policy">রিফান্ড পলিসি</a></li>
+                        <li><a href="privacy.html#terms" data-bn="শর্তাবলী" data-en="Terms & Conditions">শর্তাবলী</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4 data-bn="সাপোর্ট" data-en="Support">সাপোর্ট</h4>
+                    <ul class="support-list">
+                        <li><a href="tel:+8801324214516"><i class="fas fa-phone"></i> +8801324214516</a></li>
+                        <li class="small-text" data-bn="শুধুমাত্র হোয়াটসঅ্যাপ মেসেজ" data-en="WhatsApp Message Only">শুধুমাত্র হোয়াটসঅ্যাপ মেসেজ</li>
+                        <li><a href="mailto:jiniskinibd@gmail.com"><i class="fas fa-envelope"></i> jiniskinibd@gmail.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="payment-methods">
+                    <p data-bn="আমরা গ্রহণ করি" data-en="We Accept">আমরা গ্রহণ করি</p>
+                    <div class="payment-icons">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <span class="payment-local">bKash</span>
+                        <span class="payment-local">Nagad</span>
+                        <span class="payment-local">Rocket</span>
+                    </div>
+                </div>
+                <p class="copyright" data-bn="&copy; ২০২৬ জিনিস কিনি। সর্বস্বত্ব সংরক্ষিত" data-en="&copy; 2026 Jinis Kini. All rights reserved">&copy; ২০২৬ জিনিস কিনি। সর্বস্বত্ব সংরক্ষিত</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
 
     <script>
         function toggleTheme() {
             document.body.classList.toggle('light-mode');
-            document.querySelector('.theme-toggle i').classList.toggle('fa-moon');
-            document.querySelector('.theme-toggle i').classList.toggle('fa-sun');
+            const icon = document.querySelector('.theme-toggle i');
+            icon.classList.toggle('fa-moon');
+            icon.classList.toggle('fa-sun');
         }
+
         function toggleMobileMenu() {
             document.querySelector('.nav-links').classList.toggle('open');
             document.querySelector('.nav-right').classList.toggle('open');
         }
+        
+        window.addEventListener('scroll', () => {
+            document.getElementById('backToTop').style.display = window.scrollY > 300 ? 'flex' : 'none';
+        });
+
+        // ═════ NATIVE LANGUAGE SWITCHER ═════
+        function setLanguage(lang) {
+            localStorage.setItem('jinis_lang', lang);
+            document.documentElement.lang = lang;
+            
+            const enOpt = document.querySelector('.en-opt');
+            const bnOpt = document.querySelector('.bn-opt');
+            
+            if (enOpt && bnOpt) {
+                if (lang === 'bn') {
+                    bnOpt.classList.add('active');
+                    enOpt.classList.remove('active');
+                } else {
+                    enOpt.classList.add('active');
+                    bnOpt.classList.remove('active');
+                }
+            }
+
+            document.querySelectorAll('[data-bn]').forEach(el => {
+                if (lang === 'bn' && el.dataset.bn) {
+                    el.innerHTML = el.dataset.bn;
+                } else if (lang === 'en' && el.dataset.en) {
+                    el.innerHTML = el.dataset.en;
+                }
+            });
+        }
+
+        function toggleLanguage() {
+            const currentLang = localStorage.getItem('jinis_lang') || 'bn';
+            const newLang = currentLang === 'bn' ? 'en' : 'bn';
+            setLanguage(newLang);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('jinis_lang') || 'bn';
+            setLanguage(savedLang);
+        });
     </script>
 </body>
 </html>

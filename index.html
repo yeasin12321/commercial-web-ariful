@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jinis Kini — Premium Digital Subscriptions in Bangladesh</title>
+    <title data-bn="জিনিস কিনি — বাংলাদেশের প্রিমিয়াম ডিজিটাল সাবস্ক্রিপশন" data-en="Jinis Kini — Premium Digital Subscriptions in Bangladesh">জিনিস কিনি — বাংলাদেশের প্রিমিয়াম ডিজিটাল সাবস্ক্রিপশন</title>
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
@@ -13,30 +13,35 @@
     <nav class="navbar">
         <div class="container">
             <a href="index.html" class="logo">
-                <svg width="160" height="40" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="160" height="40" rx="8" fill="url(#lg)"/>
-                    <text x="14" y="26" font-family="Inter, sans-serif" font-weight="800" font-size="18" fill="white">Jinis Kini</text>
-                    <text x="104" y="15" font-family="Inter, sans-serif" font-weight="600" font-size="6" fill="#a78bfa">PREMIUM</text>
-                    <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#4f46e5"/></linearGradient></defs>
-                </svg>
+                <img src="logo.svg" alt="Jinis Kini" style="height: 40px; width: auto; object-fit: contain;">
             </a>
             <div class="nav-links">
-                <a href="index.html" class="active">Home</a>
-                <a href="products.html">Products</a>
-                <a href="blog.html">Blog</a>
-                <a href="support.html">Help & Support</a>
+                <a href="index.html" class="active" data-bn="হোম" data-en="Home">হোম</a>
+                <a href="products.html" data-bn="প্রোডাক্টস" data-en="Products">প্রোডাক্টস</a>
+                <a href="blog.html" data-bn="ব্লগ" data-en="Blog">ব্লগ</a>
+                <a href="support.html" data-bn="হেল্প ও সাপোর্ট" data-en="Help & Support">হেল্প ও সাপোর্ট</a>
+                
                 <div class="nav-dropdown">
-                    <button class="dropbtn">Categories <i class="fas fa-chevron-down"></i></button>
-                    <div class="dropdown-content" id="categoryDropdown">
-                        <!-- Dynamic -->
+                    <button class="dropbtn"><span data-bn="ক্যাটাগরি" data-en="Categories">ক্যাটাগরি</span> <i class="fas fa-chevron-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="products.html?cat=Adobe" data-bn="অ্যাডোবি" data-en="Adobe">Adobe</a>
+                        <a href="products.html?cat=AI Tools" data-bn="এআই টুলস" data-en="AI Tools">AI Tools</a>
+                        <a href="products.html?cat=Creative & Design" data-bn="ক্রিয়েটিভ ও ডিজাইন" data-en="Creative & Design">Creative & Design</a>
+                        <a href="products.html?cat=Video & Editing" data-bn="ভিডিও ও এডিটিং" data-en="Video & Editing">Video & Editing</a>
+                        <a href="products.html?cat=Office & Business" data-bn="অফিস ও বিজনেস" data-en="Office & Business">Office & Business</a>
+                        <a href="products.html?cat=Microsoft" data-bn="মাইক্রোসফট" data-en="Microsoft">Microsoft</a>
+                        <a href="products.html?cat=VPN & Security" data-bn="ভিপিএন ও সিকিউরিটি" data-en="VPN & Security">VPN & Security</a>
+                        <a href="products.html?cat=Streaming & Entertainment" data-bn="স্ট্রিমিং ও এন্টারটেইনমেন্ট" data-en="Streaming & Entertainment">Streaming & Entertainment</a>
                     </div>
                 </div>
             </div>
             <div class="nav-right">
                 <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
-                <!-- Language Button Updated -->
-                <button class="lang-toggle" id="langBtn" onclick="toggleLanguage()">EN</button>
-                <a href="login.html" class="btn-login"><i class="fas fa-user"></i> Login</a>
+                <div class="lang-switch-wrapper" onclick="toggleLanguage()">
+                    <div class="lang-option en-opt">EN</div>
+                    <div class="lang-option bn-opt active">বাংলা</div>
+                </div>
+                <a href="login.html" class="btn-login"><i class="fas fa-user"></i> <span data-bn="লগইন" data-en="Login">লগইন</span></a>
                 <div class="hamburger" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></div>
             </div>
         </div>
@@ -46,26 +51,24 @@
     <section class="hero">
         <div class="container">
             <div class="hero-badge">
-                <span>Bangladesh's Trusted Subscription Store</span>
+                <span data-bn="বাংলাদেশের বিশ্বস্ত সাবস্ক্রিপশন স্টোর" data-en="Bangladesh's Trusted Subscription Store">বাংলাদেশের বিশ্বস্ত সাবস্ক্রিপশন স্টোর</span>
             </div>
-            <h1 class="hero-title">
-                Premium Software,<br>
-                <span class="gradient-text">Trusted by Professionals</span>
+            <h1 class="hero-title" data-bn="প্রিমিয়াম সফটওয়্যার,<br><span class='gradient-text'>প্রফেশনালদের আস্থার নাম</span>" data-en="Premium Software,<br><span class='gradient-text'>Trusted by Professionals</span>">
+                প্রিমিয়াম সফটওয়্যার,<br>
+                <span class="gradient-text">প্রফেশনালদের আস্থার নাম</span>
             </h1>
-            <p class="hero-subtitle">
-                Adobe, AI Tools, Office, Streaming & Premium Digital Services<br>
-                with Secure Activation, Fast Delivery & Full Warranty.
+            <p class="hero-subtitle" data-bn="অ্যাডোবি, এআই টুলস, অফিস, স্ট্রিমিং সহ যাবতীয় প্রিমিয়াম ডিজিটাল সাবস্ক্রিপশন পাচ্ছেন সিকিউর অ্যাক্টিভেশন, ফাস্ট ডেলিভারি এবং ফুল ওয়ারেন্টি সহ।" data-en="Adobe, AI Tools, Office, Streaming & Premium Digital Services with Secure Activation, Fast Delivery & Full Warranty.">
+                অ্যাডোবি, এআই টুলস, অফিস, স্ট্রিমিং সহ যাবতীয় প্রিমিয়াম ডিজিটাল সাবস্ক্রিপশন পাচ্ছেন সিকিউর অ্যাক্টিভেশন, ফাস্ট ডেলিভারি এবং ফুল ওয়ারেন্টি সহ।
             </p>
-            <a href="products.html" class="btn-primary">
-                Explore Products <i class="fas fa-arrow-right"></i>
+            <a href="products.html" class="btn-primary" data-bn="প্রোডাক্টগুলো দেখুন <i class='fas fa-arrow-right'></i>" data-en="Explore Products <i class='fas fa-arrow-right'></i>">
+                প্রোডাক্টগুলো দেখুন <i class="fas fa-arrow-right"></i>
             </a>
             
-            <!-- Stats with Counter Classes -->
             <div class="hero-stats">
-                <div class="stat"><span class="stat-num counter" data-target="5" data-suffix="+">0</span><span class="stat-label">Years Experience</span></div>
-                <div class="stat"><span class="stat-num counter" data-target="5000" data-suffix="+">0</span><span class="stat-label">Happy Customers</span></div>
-                <div class="stat"><span class="stat-num counter" data-target="99" data-suffix="%">0</span><span class="stat-label">Delivery Rate</span></div>
-                <div class="stat"><span class="stat-num counter" data-target="4.9" data-suffix="">0</span><span class="stat-label">Rating</span></div>
+                <div class="stat"><span class="stat-num counter" data-target="5" data-suffix="+">0</span><span class="stat-label" data-bn="বছরের অভিজ্ঞতা" data-en="Years Experience">বছরের অভিজ্ঞতা</span></div>
+                <div class="stat"><span class="stat-num counter" data-target="5000" data-suffix="+">0</span><span class="stat-label" data-bn="সন্তুষ্ট কাস্টমার" data-en="Happy Customers">সন্তুষ্ট কাস্টমার</span></div>
+                <div class="stat"><span class="stat-num counter" data-target="99" data-suffix="%">0</span><span class="stat-label" data-bn="ডেলিভারি রেট" data-en="Delivery Rate">ডেলিভারি রেট</span></div>
+                <div class="stat"><span class="stat-num counter" data-target="4.9" data-suffix="">0</span><span class="stat-label" data-bn="রেটিং" data-en="Rating">রেটিং</span></div>
             </div>
         </div>
     </section>
@@ -73,10 +76,51 @@
     <!-- ═══ CATEGORIES ═══ -->
     <section class="categories-section">
         <div class="container">
-            <h2 class="section-title">Browse by <span class="gradient-text">Category</span></h2>
-            <p class="section-subtitle">Find the right product for every need</p>
+            <h2 class="section-title" data-bn="ব্রাউজ করুন <span class='gradient-text'>ক্যাটাগরি</span> অনুযায়ী" data-en="Browse by <span class='gradient-text'>Category</span>">ব্রাউজ করুন <span class="gradient-text">ক্যাটাগরি</span> অনুযায়ী</h2>
+            <p class="section-subtitle" data-bn="আপনার প্রয়োজনীয় সঠিক প্রোডাক্টটি বেছে নিন" data-en="Find the right product for every need">আপনার প্রয়োজনীয় সঠিক প্রোডাক্টটি বেছে নিন</p>
+            
+            <!-- ══ FIXED CATEGORY GRID ══ -->
             <div class="categories-grid" id="categoriesGrid">
-                <!-- Dynamic from API -->
+                <a href="products.html?cat=Adobe" class="category-card" data-category="Adobe">
+                    <div class="cat-icon"><i class="fab fa-adobe"></i></div>
+                    <h3 data-bn="অ্যাডোবি" data-en="Adobe">Adobe</h3>
+                    <p><span class="cat-count">0</span> <span data-bn="টি প্রোডাক্ট" data-en="Products">টি প্রোডাক্ট</span></p>
+                </a>
+                <a href="products.html?cat=AI Tools" class="category-card" data-category="AI Tools">
+                    <div class="cat-icon"><i class="fas fa-robot"></i></div>
+                    <h3 data-bn="এআই টুলস" data-en="AI Tools">AI Tools</h3>
+                    <p><span class="cat-count">0</span> <span data-bn="টি প্রোডাক্ট" data-en="Products">টি প্রোডাক্ট</span></p>
+                </a>
+                <a href="products.html?cat=Creative & Design" class="category-card" data-category="Creative & Design">
+                    <div class="cat-icon"><i class="fas fa-paint-brush"></i></div>
+                    <h3 data-bn="ক্রিয়েটিভ ও ডিজাইন" data-en="Creative & Design">Creative & Design</h3>
+                    <p><span class="cat-count">0</span> <span data-bn="টি প্রোডাক্ট" data-en="Products">টি প্রোডাক্ট</span></p>
+                </a>
+                <a href="products.html?cat=Video & Editing" class="category-card" data-category="Video & Editing">
+                    <div class="cat-icon"><i class="fas fa-video"></i></div>
+                    <h3 data-bn="ভিডিও ও এডিটিং" data-en="Video & Editing">Video & Editing</h3>
+                    <p><span class="cat-count">0</span> <span data-bn="টি প্রোডাক্ট" data-en="Products">টি প্রোডাক্ট</span></p>
+                </a>
+                <a href="products.html?cat=Office & Business" class="category-card" data-category="Office & Business">
+                    <div class="cat-icon"><i class="fas fa-briefcase"></i></div>
+                    <h3 data-bn="অফিস ও বিজনেস" data-en="Office & Business">Office & Business</h3>
+                    <p><span class="cat-count">0</span> <span data-bn="টি প্রোডাক্ট" data-en="Products">টি প্রোডাক্ট</span></p>
+                </a>
+                <a href="products.html?cat=Microsoft" class="category-card" data-category="Microsoft">
+                    <div class="cat-icon"><i class="fab fa-microsoft"></i></div>
+                    <h3 data-bn="মাইক্রোসফট" data-en="Microsoft">Microsoft</h3>
+                    <p><span class="cat-count">0</span> <span data-bn="টি প্রোডাক্ট" data-en="Products">টি প্রোডাক্ট</span></p>
+                </a>
+                <a href="products.html?cat=VPN & Security" class="category-card" data-category="VPN & Security">
+                    <div class="cat-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3 data-bn="ভিপিএন ও সিকিউরিটি" data-en="VPN & Security">VPN & Security</h3>
+                    <p><span class="cat-count">0</span> <span data-bn="টি প্রোডাক্ট" data-en="Products">টি প্রোডাক্ট</span></p>
+                </a>
+                <a href="products.html?cat=Streaming & Entertainment" class="category-card" data-category="Streaming & Entertainment">
+                    <div class="cat-icon"><i class="fas fa-film"></i></div>
+                    <h3 data-bn="স্ট্রিমিং ও এন্টারটেইনমেন্ট" data-en="Streaming & Entertainment">Streaming & Entertainment</h3>
+                    <p><span class="cat-count">0</span> <span data-bn="টি প্রোডাক্ট" data-en="Products">টি প্রোডাক্ট</span></p>
+                </a>
             </div>
         </div>
     </section>
@@ -85,15 +129,15 @@
     <section class="featured-products">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Popular Products</h2>
-                <span class="section-badge">Best Sellers</span>
+                <h2 class="section-title" data-bn="জনপ্রিয় প্রোডাক্টসমূহ" data-en="Popular Products">জনপ্রিয় প্রোডাক্টসমূহ</h2>
+                <span class="section-badge" data-bn="বেস্ট সেলার" data-en="Best Sellers">বেস্ট সেলার</span>
             </div>
-            <p class="section-subtitle">Our most popular premium subscriptions</p>
+            <p class="section-subtitle" data-bn="আমাদের সবচেয়ে বেশি বিক্রিত প্রিমিয়াম সাবস্ক্রিপশন" data-en="Our most popular premium subscriptions">আমাদের সবচেয়ে বেশি বিক্রিত প্রিমিয়াম সাবস্ক্রিপশন</p>
             <div id="productGrid" class="products-grid">
-                <!-- Dynamic from Google Sheet -->
+                <!-- Dynamic Content Load -->
             </div>
             <div class="view-all">
-                <a href="products.html" class="btn-secondary">View All Products <i class="fas fa-arrow-right"></i></a>
+                <a href="products.html" class="btn-secondary" data-bn="সকল প্রোডাক্ট দেখুন <i class='fas fa-arrow-right'></i>" data-en="View All Products <i class='fas fa-arrow-right'></i>">সকল প্রোডাক্ট দেখুন <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
@@ -101,16 +145,16 @@
     <!-- ═══ HOW IT WORKS ═══ -->
     <section class="how-it-works">
         <div class="container">
-            <h2 class="section-title">How It Works</h2>
-            <p class="section-subtitle">Simple, beginner-friendly process</p>
+            <h2 class="section-title" data-bn="কীভাবে কাজ করে" data-en="How It Works">কীভাবে কাজ করে</h2>
+            <p class="section-subtitle" data-bn="সহজ এবং নিরাপদ প্রক্রিয়া" data-en="Simple, beginner-friendly process">সহজ এবং নিরাপদ প্রক্রিয়া</p>
             <div class="steps-grid">
-                <div class="step-card"><div class="step-num">1</div><h3>Choose Product</h3><p>Select your preferred software and plan</p></div>
+                <div class="step-card"><div class="step-num">1</div><h3 data-bn="প্রোডাক্ট নির্বাচন করুন" data-en="Choose Product">প্রোডাক্ট নির্বাচন করুন</h3><p data-bn="আপনার প্রয়োজনীয় সফটওয়্যার এবং প্ল্যান সিলেক্ট করুন" data-en="Select your preferred software and plan">আপনার প্রয়োজনীয় সফটওয়্যার এবং প্ল্যান সিলেক্ট করুন</p></div>
                 <div class="step-connector"><i class="fas fa-arrow-right"></i></div>
-                <div class="step-card"><div class="step-num">2</div><h3>Place Order</h3><p>Order via WhatsApp or website checkout</p></div>
+                <div class="step-card"><div class="step-num">2</div><h3 data-bn="অর্ডার প্লেস করুন" data-en="Place Order">অর্ডার প্লেস করুন</h3><p data-bn="ওয়েবসাইট বা হোয়াটসঅ্যাপের মাধ্যমে অর্ডার করুন" data-en="Order via WhatsApp or website checkout">ওয়েবসাইট বা হোয়াটসঅ্যাপের মাধ্যমে অর্ডার করুন</p></div>
                 <div class="step-connector"><i class="fas fa-arrow-right"></i></div>
-                <div class="step-card"><div class="step-num">3</div><h3>Secure Activation</h3><p>Activated on your personal email within minutes</p></div>
+                <div class="step-card"><div class="step-num">3</div><h3 data-bn="সিকিউর অ্যাক্টিভেশন" data-en="Secure Activation">সিকিউর অ্যাক্টিভেশন</h3><p data-bn="কিছুক্ষণের মধ্যেই আপনার ইমেইলে অ্যাক্টিভেট করা হবে" data-en="Activated on your personal email within minutes">কিছুক্ষণের মধ্যেই আপনার ইমেইলে অ্যাক্টিভেট করা হবে</p></div>
                 <div class="step-connector"><i class="fas fa-arrow-right"></i></div>
-                <div class="step-card"><div class="step-num">4</div><h3>Start Using</h3><p>Enjoy full warranty and premium support</p></div>
+                <div class="step-card"><div class="step-num">4</div><h3 data-bn="ব্যবহার শুরু করুন" data-en="Start Using">ব্যবহার শুরু করুন</h3><p data-bn="ফুল ওয়ারেন্টি এবং প্রিমিয়াম সাপোর্টের সাথে উপভোগ করুন" data-en="Enjoy full warranty and premium support">ফুল ওয়ারেন্টি এবং প্রিমিয়াম সাপোর্টের সাথে উপভোগ করুন</p></div>
             </div>
         </div>
     </section>
@@ -118,13 +162,13 @@
     <!-- ═══ WHY CHOOSE US ═══ -->
     <section class="why-us">
         <div class="container">
-            <h2 class="section-title">Why Choose <span class="gradient-text">Jinis Kini</span></h2>
-            <p class="section-subtitle">Trusted by thousands of customers — 100% secure and authentic service.</p>
+            <h2 class="section-title" data-bn="কেন <span class='gradient-text'>জিনিস কিনি</span> বেছে নেবেন?" data-en="Why Choose <span class='gradient-text'>Jinis Kini</span>">কেন <span class="gradient-text">জিনিস কিনি</span> বেছে নেবেন?</h2>
+            <p class="section-subtitle" data-bn="হাজারো কাস্টমারের আস্থার নাম — ১০০% নিরাপদ এবং নির্ভরযোগ্য সার্ভিস।" data-en="Trusted by thousands of customers — 100% secure and authentic service.">হাজারো কাস্টমারের আস্থার নাম — ১০০% নিরাপদ এবং নির্ভরযোগ্য সার্ভিস।</p>
             <div class="features-grid">
-                <div class="feature-card"><div class="feature-icon"><i class="fas fa-check-circle"></i></div><h3>100% Official Access</h3><p>Genuine subscriptions only — never fake or unauthorized accounts.</p></div>
-                <div class="feature-card"><div class="feature-icon"><i class="fas fa-shield"></i></div><h3>100% Secure</h3><p>Fully legal access — zero cracked or carded risk.</p></div>
-                <div class="feature-card"><div class="feature-icon"><i class="fas fa-clock"></i></div><h3>Full Warranty</h3><p>Reliable support and warranty for the entire subscription term.</p></div>
-                <div class="feature-card"><div class="feature-icon"><i class="fas fa-money-bill-wave"></i></div><h3>Money-Back Guarantee</h3><p>Refund or replacement guaranteed under our service terms.</p></div>
+                <div class="feature-card"><div class="feature-icon"><i class="fas fa-check-circle"></i></div><h3 data-bn="১০০% অফিসিয়াল অ্যাক্সেস" data-en="100% Official Access">১০০% অফিসিয়াল অ্যাক্সেস</h3><p data-bn="শুধুমাত্র আসল সাবস্ক্রিপশন — কোনো ফেক অ্যাকাউন্ট নেই।" data-en="Genuine subscriptions only — never fake or unauthorized accounts.">শুধুমাত্র আসল সাবস্ক্রিপশন — কোনো ফেক অ্যাকাউন্ট নেই।</p></div>
+                <div class="feature-card"><div class="feature-icon"><i class="fas fa-shield"></i></div><h3 data-bn="১০০% নিরাপদ" data-en="100% Secure">১০০% নিরাপদ</h3><p data-bn="সম্পূর্ণ লিগ্যাল অ্যাক্সেস — ক্র্যাক বা কার্ডিং এর ঝুঁকি শূন্য।" data-en="Fully legal access — zero cracked or carded risk.">সম্পূর্ণ লিগ্যাল অ্যাক্সেস — ক্র্যাক বা কার্ডিং এর ঝুঁকি শূন্য।</p></div>
+                <div class="feature-card"><div class="feature-icon"><i class="fas fa-clock"></i></div><h3 data-bn="ফুল ওয়ারেন্টি" data-en="Full Warranty">ফুল ওয়ারেন্টি</h3><p data-bn="সম্পূর্ণ সাবস্ক্রিপশন মেয়াদের জন্য নির্ভরযোগ্য সাপোর্ট এবং ওয়ারেন্টি।" data-en="Reliable support and warranty for the entire subscription term.">সম্পূর্ণ সাবস্ক্রিপশন মেয়াদের জন্য নির্ভরযোগ্য সাপোর্ট এবং ওয়ারেন্টি।</p></div>
+                <div class="feature-card"><div class="feature-icon"><i class="fas fa-money-bill-wave"></i></div><h3 data-bn="মানি-ব্যাক গ্যারান্টি" data-en="Money-Back Guarantee">মানি-ব্যাক গ্যারান্টি</h3><p data-bn="আমাদের সার্ভিস টার্মস অনুযায়ী রিফান্ড বা রিপ্লেসমেন্ট নিশ্চিত।" data-en="Refund or replacement guaranteed under our service terms.">আমাদের সার্ভিস টার্মস অনুযায়ী রিফান্ড বা রিপ্লেসমেন্ট নিশ্চিত।</p></div>
             </div>
         </div>
     </section>
@@ -134,12 +178,12 @@
         <div class="container">
             <div class="chat-card">
                 <div class="chat-content">
-                    <h2>Speak with our team</h2>
-                    <p>Need help choosing the right plan? Our expert team is here to guide you — fast, reliable, personal support.</p>
-                   <a href="https://wa.me/01324214516" target="_blank" class="btn-whatsapp">
-                        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                    <h2 data-bn="আমাদের টিমের সাথে কথা বলুন" data-en="Speak with our team">আমাদের টিমের সাথে কথা বলুন</h2>
+                    <p data-bn="সঠিক প্ল্যানটি বেছে নিতে সাহায্য প্রয়োজন? আমাদের এক্সপার্ট টিম আপনাকে গাইড করার জন্য প্রস্তুত — দ্রুত এবং পার্সোনাল সাপোর্ট।" data-en="Need help choosing the right plan? Our expert team is here to guide you — fast, reliable, personal support.">সঠিক প্ল্যানটি বেছে নিতে সাহায্য প্রয়োজন? আমাদের এক্সপার্ট টিম আপনাকে গাইড করার জন্য প্রস্তুত — দ্রুত এবং পার্সোনাল সাপোর্ট।</p>
+                   <a href="https://wa.me/01324214516" target="_blank" class="btn-whatsapp" data-bn="<i class='fab fa-whatsapp'></i> হোয়াটসঅ্যাপে চ্যাট করুন" data-en="<i class='fab fa-whatsapp'></i> Chat on WhatsApp">
+                        <i class="fab fa-whatsapp"></i> হোয়াটসঅ্যাপে চ্যাট করুন
                     </a>
-                    <span class="chat-status"><span class="dot"></span> Online now · Avg. reply in 5 min</span>
+                    <span class="chat-status"><span class="dot"></span> <span data-bn="এখন অনলাইনে · গড় রিপ্লাই ৫ মিনিটে" data-en="Online now · Avg. reply in 5 min">এখন অনলাইনে · গড় রিপ্লাই ৫ মিনিটে</span></span>
                 </div>
             </div>
         </div>
@@ -150,42 +194,40 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <h3 style="font-size:22px;font-weight:800;background:var(--gradient-1);display:inline-block;padding:8px 16px;border-radius:8px;color:white">Jinis Kini</h3>
-                    <p>Your trusted destination for premium software, AI tools and digital subscriptions.</p>
-                    <p class="footer-address"><i class="fas fa-location-dot"></i> Your City, Bangladesh</p>
-                    <p class="footer-tagline">Trusted by 5000+ customers Since 2024</p>
+                    <img src="logo.svg" alt="Jinis Kini Logo" style="height: 45px; width: auto; margin-bottom: 16px; object-fit: contain;">
+                    <p data-bn="প্রিমিয়াম সফটওয়্যার, এআই টুলস এবং ডিজিটাল সাবস্ক্রিপশনের জন্য আপনার নির্ভরযোগ্য গন্তব্য।" data-en="Your trusted destination for premium software, AI tools and digital subscriptions.">প্রিমিয়াম সফটওয়্যার, এআই টুলস এবং ডিজিটাল সাবস্ক্রিপশনের জন্য আপনার নির্ভরযোগ্য গন্তব্য।</p>
+                    <p class="footer-address" data-bn="<i class='fas fa-location-dot'></i> বাংলাদেশ" data-en="<i class='fas fa-location-dot'></i> Bangladesh"><i class="fas fa-location-dot"></i> বাংলাদেশ</p>
+                    <p class="footer-tagline" data-bn="২০২৪ থেকে ৫০০০+ কাস্টমারের ভরসা" data-en="Trusted by 5000+ customers Since 2024">২০২৪ থেকে ৫০০০+ কাস্টমারের ভরসা</p>
                 </div>
                 <div class="footer-links">
-                    <h4>Quick Links</h4>
+                    <h4 data-bn="কুইক লিংকস" data-en="Quick Links">কুইক লিংকস</h4>
                     <ul>
-                        <li><a href="products.html">All Products</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="support.html">Help & Support</a></li>
-                        <li><a href="dashboard.html">My Account</a></li>
+                        <li><a href="products.html" data-bn="সকল প্রোডাক্ট" data-en="All Products">সকল প্রোডাক্ট</a></li>
+                        <li><a href="blog.html" data-bn="ব্লগ" data-en="Blog">ব্লগ</a></li>
+                        <li><a href="support.html" data-bn="হেল্প ও সাপোর্ট" data-en="Help & Support">হেল্প ও সাপোর্ট</a></li>
+                        <li><a href="dashboard.html" data-bn="আমার অ্যাকাউন্ট" data-en="My Account">আমার অ্যাকাউন্ট</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
-                    <h4>Legal</h4>
+                    <h4 data-bn="লিগ্যাল" data-en="Legal">লিগ্যাল</h4>
                     <ul>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="refund.html">Refund Policy</a></li>
-                        <li><a href="privacy.html#terms">Terms & Conditions</a></li>
+                        <li><a href="privacy.html" data-bn="প্রাইভেসি পলিসি" data-en="Privacy Policy">প্রাইভেসি পলিসি</a></li>
+                        <li><a href="refund.html" data-bn="রিফান্ড পলিসি" data-en="Refund Policy">রিফান্ড পলিসি</a></li>
+                        <li><a href="privacy.html#terms" data-bn="শর্তাবলী" data-en="Terms & Conditions">শর্তাবলী</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
-                    <h4>Support</h4>
+                    <h4 data-bn="সাপোর্ট" data-en="Support">সাপোর্ট</h4>
                     <ul class="support-list">
                         <li><a href="tel:+8801324214516"><i class="fas fa-phone"></i> +8801324214516</a></li>
-                        <li class="small-text">WhatsApp Message Only</li>
-                        <li><a href="mailto:your@email.com"><i class="fas fa-envelope"></i> your@email.com</a></li>
-                        <li><a href="#"><i class="fab fa-whatsapp"></i> WhatsApp Chat</a></li>
-                        <li class="small-text">Sat – Thu · 10am – 10pm</li>
+                        <li class="small-text" data-bn="শুধুমাত্র হোয়াটসঅ্যাপ মেসেজ" data-en="WhatsApp Message Only">শুধুমাত্র হোয়াটসঅ্যাপ মেসেজ</li>
+                        <li><a href="mailto:jiniskinibd@gmail.com"><i class="fas fa-envelope"></i> jiniskinibd@gmail.com</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
                 <div class="payment-methods">
-                    <p>We Accept</p>
+                    <p data-bn="আমরা গ্রহণ করি" data-en="We Accept">আমরা গ্রহণ করি</p>
                     <div class="payment-icons">
                         <i class="fab fa-cc-visa"></i>
                         <i class="fab fa-cc-mastercard"></i>
@@ -194,7 +236,7 @@
                         <span class="payment-local">Rocket</span>
                     </div>
                 </div>
-                <p class="copyright">&copy; 2026 Jinis Kini. All rights reserved</p>
+                <p class="copyright" data-bn="&copy; ২০২৬ জিনিস কিনি। সর্বস্বত্ব সংরক্ষিত" data-en="&copy; 2026 Jinis Kini. All rights reserved">&copy; ২০২৬ জিনিস কিনি। সর্বস্বত্ব সংরক্ষিত</p>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-facebook"></i></a>
                     <a href="#"><i class="fab fa-whatsapp"></i></a>
@@ -205,122 +247,108 @@
 
     <button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
 
-    <!-- Google Translate Element (Hidden) -->
-    <div id="google_translate_element" style="display:none;"></div>
-
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en', 
-                includedLanguages: 'en,bn', 
-                autoDisplay: false
-            }, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
     <script>
-        // ═══════ YOUR GOOGLE SHEET API URL ═══════
         const SHEET_API = 'https://sheetdb.io/api/v1/n2j17tqzv1a23';
-
         let allProducts = [];
-        let allCategories = [];
 
-        // ── Utility ──
         function toggleTheme() {
             document.body.classList.toggle('light-mode');
             const icon = document.querySelector('.theme-toggle i');
             icon.classList.toggle('fa-moon');
             icon.classList.toggle('fa-sun');
         }
+
         function toggleMobileMenu() {
             document.querySelector('.nav-links').classList.toggle('open');
             document.querySelector('.nav-right').classList.toggle('open');
         }
+        
         window.addEventListener('scroll', () => {
             document.getElementById('backToTop').style.display = window.scrollY > 300 ? 'flex' : 'none';
         });
 
-        // ── Translation Toggle Logic ──
-        let isBangla = false;
-        function toggleLanguage() {
-            let selectField = document.querySelector(".goog-te-combo");
-            let langBtn = document.getElementById('langBtn');
+        // ═════ NATIVE LANGUAGE SWITCHER ═════
+        function setLanguage(lang) {
+            localStorage.setItem('jinis_lang', lang);
+            document.documentElement.lang = lang;
             
-            if (selectField) {
-                if (!isBangla) {
-                    selectField.value = "bn";
-                    selectField.dispatchEvent(new Event("change"));
-                    langBtn.innerText = "BN";
-                    isBangla = true;
+            const enOpt = document.querySelector('.en-opt');
+            const bnOpt = document.querySelector('.bn-opt');
+            
+            if (enOpt && bnOpt) {
+                if (lang === 'bn') {
+                    bnOpt.classList.add('active');
+                    enOpt.classList.remove('active');
                 } else {
-                    selectField.value = "en";
-                    selectField.dispatchEvent(new Event("change"));
-                    langBtn.innerText = "EN";
-                    isBangla = false;
+                    enOpt.classList.add('active');
+                    bnOpt.classList.remove('active');
                 }
-            } else {
-                console.log("Google Translate is still loading...");
+            }
+
+            document.querySelectorAll('[data-bn]').forEach(el => {
+                if (lang === 'bn' && el.dataset.bn) {
+                    el.innerHTML = el.dataset.bn;
+                } else if (lang === 'en' && el.dataset.en) {
+                    el.innerHTML = el.dataset.en;
+                }
+            });
+
+            if (allProducts.length > 0) {
+                renderPageCategories();
+                renderFeaturedProducts();
             }
         }
 
-        // ── Load Products from Google Sheet ──
+        function toggleLanguage() {
+            const currentLang = localStorage.getItem('jinis_lang') || 'bn';
+            const newLang = currentLang === 'bn' ? 'en' : 'bn';
+            setLanguage(newLang);
+        }
+
+        // ── Load Products ──
         async function loadData() {
             try {
                 const res = await fetch(SHEET_API);
                 allProducts = await res.json();
             } catch(e) {
-                console.log('API failed, using fallback data');
-                allProducts = getFallbackProducts();
+                console.log('API Error');
             }
             
-            const cats = new Set();
-            allProducts.forEach(p => { if (p.category) cats.add(p.category); });
-            allCategories = Array.from(cats);
-            
-            renderNavCategories();
             renderPageCategories();
             renderFeaturedProducts();
         }
 
-        // ── Nav Dropdown Categories ──
-        function renderNavCategories() {
-            const dd = document.getElementById('categoryDropdown');
-            dd.innerHTML = '';
-            allCategories.forEach(cat => {
-                dd.innerHTML += `<a href="products.html?cat=${encodeURIComponent(cat)}">${cat}</a>`;
-            });
-        }
-
-        // ── Home Page Category Grid ──
         function renderPageCategories() {
-            const grid = document.getElementById('categoriesGrid');
-            const icons = ['fab fa-adobe','fas fa-brain','fas fa-paint-brush','fas fa-video','fab fa-microsoft','fas fa-shield-halved','fas fa-film','fas fa-robot','fas fa-headphones'];
-            grid.innerHTML = '';
-            allCategories.forEach((cat, i) => {
-                const count = allProducts.filter(p => p.category === cat).length;
-                grid.innerHTML += `
-                    <a href="products.html?cat=${encodeURIComponent(cat)}" class="category-card">
-                        <div class="cat-icon"><i class="${icons[i % icons.length]}"></i></div>
-                        <h3>${cat}</h3>
-                        <p>${count} Products</p>
-                    </a>
-                `;
+            // Count products per category and update the hardcoded HTML
+            const cards = document.querySelectorAll('.category-card');
+            cards.forEach(card => {
+                const catName = card.getAttribute('data-category');
+                const count = allProducts.filter(p => p.category && p.category.trim().toLowerCase() === catName.toLowerCase()).length;
+                const countSpan = card.querySelector('.cat-count');
+                if(countSpan) countSpan.innerText = count;
             });
         }
 
-        // ── Product Cards ──
         function renderFeaturedProducts() {
             const grid = document.getElementById('productGrid');
             grid.innerHTML = '';
             
-            const toShow = allProducts.length > 8 ? allProducts.slice(0, 8) : allProducts;
+            let featuredProducts = allProducts.filter(p => p.homepage && p.homepage.trim().toLowerCase() === 'yes');
+
+            if (featuredProducts.length === 0) {
+                featuredProducts = allProducts.slice(0, 8);
+            }
+
+            const currentLang = localStorage.getItem('jinis_lang') || 'bn';
+            const salesText = currentLang === 'bn' ? 'বিক্রি হয়েছে' : 'Sales';
+            const btnText = currentLang === 'bn' ? 'প্ল্যান দেখুন' : 'View Plans';
+            const moText = currentLang === 'bn' ? '/মাস' : '/mo';
             
-            toShow.forEach(p => {
+            featuredProducts.forEach(p => {
                 const badgeClass = p.badge || 'primary';
                 const img = p.image || p.image_url || `https://placehold.co/300x300/1e1b4b/7c3aed?text=${encodeURIComponent(p.name ? p.name.substring(0,10) : 'Product')}`;
                 const discountHtml = p.discount_percent ? `<span class="badge -${badgeClass}">${p.discount_percent}</span>` : '';
-                const salesHtml = p.sales_count ? `<p class="sales-count"><i class="fas fa-shopping-cart"></i> ${p.sales_count}+ Sales</p>` : '';
+                const salesHtml = p.sales_count ? `<p class="sales-count"><i class="fas fa-shopping-cart"></i> ${p.sales_count}+ ${salesText}</p>` : '';
                 const originalHtml = p.original_price ? `<span class="original-price">৳${Number(p.original_price).toLocaleString()}</span>` : '';
                 
                 grid.innerHTML += `
@@ -331,14 +359,17 @@
                         </div>
                         <div class="product-info">
                             <span class="product-category">${p.category || 'Featured'}</span>
-                            <h3>${p.name}</h3>
+                            <h3 style="margin-bottom: ${p.sales_count ? '6px' : '10px'}">${p.name}</h3>
                             ${salesHtml}
+                            
+                            ${p.recommendation ? `<div style="font-size: 11px; color: #22c55e; font-weight: 700; margin-bottom: 8px;"><i class="fas fa-thumbs-up" style="margin-right:4px;"></i> ${p.recommendation}</div>` : ''}
+
                             <div class="product-pricing">
-                                <span class="sale-price">৳${Number(p.sale_price).toLocaleString()}<span class="period">/mo</span></span>
+                                <span class="sale-price">৳${Number(p.sale_price).toLocaleString()}<span class="period">${moText}</span></span>
                                 ${originalHtml}
                             </div>
                             <button class="btn-view" onclick="event.stopPropagation();window.location.href='product.html?id=${p.id || p.slug || encodeURIComponent(p.name)}'">
-                                View Plans <i class="fas fa-arrow-right"></i>
+                                ${btnText} <i class="fas fa-arrow-right"></i>
                             </button>
                         </div>
                     </div>
@@ -346,18 +377,6 @@
             });
         }
 
-        function getFallbackProducts() {
-            return [
-                { id:"gimini pro", name:"Gemini Pro", category:"Gemini", sale_price:"160", original_price:"2500", discount_percent:"88%", sales_count:"1680", image:"https://placehold.co/300x300/1e1b4b/7c3aed?text=Adobe+CC", badge:"flagship" },
-                { id:"canva-pro", name:"Canva Pro Subscription", category:"Creative & Design", sale_price:"99", original_price:"1200", discount_percent:"92%", sales_count:"3061", image:"https://placehold.co/300x300/1e1b4b/d97706?text=Canva+Pro", badge:"popular" },
-                { id:"chatgpt-plus", name:"ChatGPT Plus", category:"AI Tools", sale_price:"299", original_price:"400", discount_percent:"25%", sales_count:"186", image:"https://placehold.co/300x300/1e1b4b/dc2626?text=ChatGPT", badge:"hot" },
-                { id:"netflix-premium", name:"Netflix Premium", category:"Streaming", sale_price:"960", original_price:"1560", discount_percent:"38%", sales_count:"991", image:"https://placehold.co/300x300/1e1b4b/2563eb?text=Netflix", badge:"popular" },
-                { id:"office-365", name:"Office 365 Subscription", category:"Microsoft", sale_price:"1950", original_price:"7199", discount_percent:"73%", sales_count:"115", image:"https://placehold.co/300x300/1e1b4b/3b82f6?text=Office+365", badge:"primary" },
-                { id:"capcut-pro", name:"CapCut Pro", category:"Video Editing", sale_price:"550", original_price:"950", discount_percent:"42%", sales_count:"217", image:"https://placehold.co/300x300/1e1b4b/ef4444?text=CapCut", badge:"hot" }
-            ];
-        }
-
-        // ── Counter Animation Script ──
         function startCounterAnimation() {
             const counters = document.querySelectorAll('.counter');
             const observer = new IntersectionObserver((entries) => {
@@ -390,8 +409,10 @@
             if(statsSection) observer.observe(statsSection);
         }
 
-        // ── START ──
         document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('jinis_lang') || 'bn';
+            setLanguage(savedLang);
+            
             loadData();
             startCounterAnimation();
         });

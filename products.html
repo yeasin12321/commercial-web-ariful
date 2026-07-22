@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Products — Jinis Kini</title>
+    <title data-bn="সকল প্রোডাক্টস — জিনিস কিনি" data-en="All Products — Jinis Kini">সকল প্রোডাক্টস — জিনিস কিনি</title>
+    <!-- ═══ Browser Tab Icon (Favicon) ═══ -->
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         .filter-bar { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:32px; justify-content:center; }
-        .filter-btn { padding:10px 24px; background:var(--bg-card); border:1px solid var(--border-color); border-radius:100px; color:var(--text-secondary); font-size:14px; font-weight:500; cursor:pointer; transition:all 0.3s; font-family:var(--font); }
-        .filter-btn:hover, .filter-btn.active { background:var(--accent-primary); border-color:var(--accent-primary); color:white; }
+        .filter-btn { padding:10px 24px; background:var(--bg-card); border:1px solid var(--border-color); border-radius:100px; color:var(--text-secondary); font-size:14px; font-weight:500; cursor:pointer; transition:all 0.3s; font-family:var(--font); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);}
+        .filter-btn:hover, .filter-btn.active { background:var(--accent-primary); border-color:var(--accent-primary); color:white; box-shadow: 0 4px 15px var(--accent-glow);}
         .search-box { width:100%; max-width:500px; margin:0 auto 24px; display:block; position:relative; }
         .search-box input { width:100%; padding:16px 20px 16px 50px; background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius-sm); color:var(--text-primary); font-size:15px; font-family:var(--font); }
         .search-box input:focus { outline:none; border-color:var(--accent-primary); }
@@ -24,22 +26,39 @@
     <nav class="navbar">
         <div class="container">
             <a href="index.html" class="logo">
-                <svg width="160" height="40" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="160" height="40" rx="8" fill="url(#lg)"/>
-                    <text x="14" y="26" font-family="Inter" font-weight="800" font-size="18" fill="white">Jinis Kini</text>
-                    <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#4f46e5"/></linearGradient></defs>
-                </svg>
+                <img src="logo.svg" alt="Jinis Kini" style="height: 40px; width: auto; object-fit: contain;">
             </a>
             <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="products.html" class="active">Products</a>
-                <a href="blog.html">Blog</a>
-                <a href="support.html">Help & Support</a>
+                <a href="index.html" data-bn="হোম" data-en="Home">হোম</a>
+                <a href="products.html" class="active" data-bn="প্রোডাক্টস" data-en="Products">প্রোডাক্টস</a>
+                <a href="blog.html" data-bn="ব্লগ" data-en="Blog">ব্লগ</a>
+                <a href="support.html" data-bn="হেল্প ও সাপোর্ট" data-en="Help & Support">হেল্প ও সাপোর্ট</a>
+                
+                <!-- ══ CATEGORIES DROPDOWN (UPDATED) ══ -->
+                <div class="nav-dropdown">
+                    <button class="dropbtn"><span data-bn="ক্যাটাগরি" data-en="Categories">ক্যাটাগরি</span> <i class="fas fa-chevron-down"></i></button>
+                    <div class="dropdown-content">
+                        <a href="products.html?cat=Adobe" data-bn="অ্যাডোবি" data-en="Adobe">Adobe</a>
+                        <a href="products.html?cat=AI Tools" data-bn="এআই টুলস" data-en="AI Tools">AI Tools</a>
+                        <a href="products.html?cat=Creative & Design" data-bn="ক্রিয়েটিভ ও ডিজাইন" data-en="Creative & Design">Creative & Design</a>
+                        <a href="products.html?cat=Video & Editing" data-bn="ভিডিও ও এডিটিং" data-en="Video & Editing">Video & Editing</a>
+                        <a href="products.html?cat=Office & Business" data-bn="অফিস ও বিজনেস" data-en="Office & Business">Office & Business</a>
+                        <a href="products.html?cat=Microsoft" data-bn="মাইক্রোসফট" data-en="Microsoft">Microsoft</a>
+                        <a href="products.html?cat=VPN & Security" data-bn="ভিপিএন ও সিকিউরিটি" data-en="VPN & Security">VPN & Security</a>
+                        <a href="products.html?cat=Streaming & Entertainment" data-bn="স্ট্রিমিং ও এন্টারটেইনমেন্ট" data-en="Streaming & Entertainment">Streaming & Entertainment</a>
+                    </div>
+                </div>
+
             </div>
             <div class="nav-right">
                 <button class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></button>
-                <button class="lang-toggle">EN</button>
-                <a href="login.html" class="btn-login"><i class="fas fa-user"></i> Login</a>
+                
+                <div class="lang-switch-wrapper" onclick="toggleLanguage()">
+                    <div class="lang-option en-opt">EN</div>
+                    <div class="lang-option bn-opt active">বাংলা</div>
+                </div>
+
+                <a href="login.html" class="btn-login"><i class="fas fa-user"></i> <span data-bn="লগইন" data-en="Login">লগইন</span></a>
                 <div class="hamburger" onclick="toggleMobileMenu()"><i class="fas fa-bars"></i></div>
             </div>
         </div>
@@ -48,22 +67,33 @@
     <section class="page-header">
         <div class="container">
             <div class="breadcrumb">
-                <a href="index.html">Home</a> <i class="fas fa-chevron-right"></i>
-                <span class="current">Products</span>
+                <a href="index.html" data-bn="হোম" data-en="Home">হোম</a> <i class="fas fa-chevron-right"></i>
+                <span class="current" data-bn="প্রোডাক্টস" data-en="Products">প্রোডাক্টস</span>
             </div>
-            <h1>Premium Digital Subscriptions</h1>
-            <p>Bangladesh's most trusted and verified premium subscriptions at the best price</p>
+            <h1 data-bn="প্রিমিয়াম ডিজিটাল সাবস্ক্রিপশন" data-en="Premium Digital Subscriptions">প্রিমিয়াম ডিজিটাল সাবস্ক্রিপশন</h1>
+            <p data-bn="বাংলাদেশের সবচেয়ে বিশ্বস্ত এবং ভেরিফায়েড প্রিমিয়াম সাবস্ক্রিপশন সেরা দামে" data-en="Bangladesh's most trusted and verified premium subscriptions at the best price">বাংলাদেশের সবচেয়ে বিশ্বস্ত এবং ভেরিফায়েড প্রিমিয়াম সাবস্ক্রিপশন সেরা দামে</p>
         </div>
     </section>
 
     <section class="featured-products" style="padding-top:20px">
         <div class="container">
+            
+            <!-- ══ FIXED FILTER BUTTONS ══ -->
             <div class="filter-bar" id="filterBar">
-                <button class="filter-btn active" onclick="filterProducts('all')">All</button>
+                <button class="filter-btn active" data-filter="all" onclick="filterProducts('all')"><span data-bn="সবগুলো" data-en="All">সবগুলো</span></button>
+                <button class="filter-btn" data-filter="Adobe" onclick="filterProducts('Adobe')"><span data-bn="অ্যাডোবি" data-en="Adobe">Adobe</span></button>
+                <button class="filter-btn" data-filter="AI Tools" onclick="filterProducts('AI Tools')"><span data-bn="এআই টুলস" data-en="AI Tools">AI Tools</span></button>
+                <button class="filter-btn" data-filter="Creative & Design" onclick="filterProducts('Creative & Design')"><span data-bn="ক্রিয়েটিভ ও ডিজাইন" data-en="Creative & Design">Creative & Design</span></button>
+                <button class="filter-btn" data-filter="Video & Editing" onclick="filterProducts('Video & Editing')"><span data-bn="ভিডিও ও এডিটিং" data-en="Video & Editing">Video & Editing</span></button>
+                <button class="filter-btn" data-filter="Office & Business" onclick="filterProducts('Office & Business')"><span data-bn="অফিস ও বিজনেস" data-en="Office & Business">Office & Business</span></button>
+                <button class="filter-btn" data-filter="Microsoft" onclick="filterProducts('Microsoft')"><span data-bn="মাইক্রোসফট" data-en="Microsoft">Microsoft</span></button>
+                <button class="filter-btn" data-filter="VPN & Security" onclick="filterProducts('VPN & Security')"><span data-bn="ভিপিএন ও সিকিউরিটি" data-en="VPN & Security">VPN & Security</span></button>
+                <button class="filter-btn" data-filter="Streaming & Entertainment" onclick="filterProducts('Streaming & Entertainment')"><span data-bn="স্ট্রিমিং ও এন্টারটেইনমেন্ট" data-en="Streaming & Entertainment">Streaming & Entertainment</span></button>
             </div>
+            
             <div class="search-box">
                 <i class="fas fa-search"></i>
-                <input type="text" id="searchInput" placeholder="Search products..." onkeyup="searchProducts()">
+                <input type="text" id="searchInput" placeholder="সার্চ করুন..." onkeyup="searchProducts()">
             </div>
             <div id="productGrid" class="products-grid"></div>
         </div>
@@ -73,52 +103,49 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <svg width="160" height="40" viewBox="0 0 160 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <rect width="160" height="40" rx="8" fill="url(#lg2)"/>
-                        <text x="14" y="26" font-family="Inter" font-weight="800" font-size="18" fill="white">Jinis Kini</text>
-                        <defs><linearGradient id="lg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#4f46e5"/></linearGradient></defs>
-                    </svg>
-                    <p>Your trusted destination for premium software.</p>
+                    <img src="logo.svg" alt="Jinis Kini Logo" style="height: 45px; width: auto; margin-bottom: 16px; object-fit: contain;">
+                    <p data-bn="প্রিমিয়াম সফটওয়্যার, এআই টুলস এবং ডিজিটাল সাবস্ক্রিপশনের জন্য আপনার নির্ভরযোগ্য গন্তব্য।" data-en="Your trusted destination for premium software, AI Tools and digital subscriptions.">প্রিমিয়াম সফটওয়্যার, এআই টুলস এবং ডিজিটাল সাবস্ক্রিপশনের জন্য আপনার নির্ভরযোগ্য গন্তব্য।</p>
+                    <p class="footer-address" data-bn="<i class='fas fa-location-dot'></i> বাংলাদেশ" data-en="<i class='fas fa-location-dot'></i> Bangladesh"><i class="fas fa-location-dot"></i> বাংলাদেশ</p>
+                    <p class="footer-tagline" data-bn="২০২৪ থেকে ৫০০০+ কাস্টমারের ভরসা" data-en="Trusted by 5000+ customers Since 2024">২০২৪ থেকে ৫০০০+ কাস্টমারের ভরসা</p>
                 </div>
                 <div class="footer-links">
-                    <h4>Quick Links</h4>
+                    <h4 data-bn="কুইক লিংকস" data-en="Quick Links">কুইক লিংকস</h4>
                     <ul>
-                        <li><a href="products.html">All Products</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="support.html">Help & Support</a></li>
-                        <li><a href="dashboard.html">My Account</a></li>
+                        <li><a href="products.html" data-bn="সকল প্রোডাক্ট" data-en="All Products">সকল প্রোডাক্ট</a></li>
+                        <li><a href="blog.html" data-bn="ব্লগ" data-en="Blog">ব্লগ</a></li>
+                        <li><a href="support.html" data-bn="হেল্প ও সাপোর্ট" data-en="Help & Support">হেল্প ও সাপোর্ট</a></li>
+                        <li><a href="dashboard.html" data-bn="আমার অ্যাকাউন্ট" data-en="My Account">আমার অ্যাকাউন্ট</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
-                    <h4>Legal</h4>
+                    <h4 data-bn="লিগ্যাল" data-en="Legal">লিগ্যাল</h4>
                     <ul>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="refund.html">Refund Policy</a></li>
-                        <li><a href="privacy.html#terms">Terms & Conditions</a></li>
+                        <li><a href="privacy.html" data-bn="প্রাইভেসি পলিসি" data-en="Privacy Policy">প্রাইভেসি পলিসি</a></li>
+                        <li><a href="refund.html" data-bn="রিফান্ড পলিসি" data-en="Refund Policy">রিফান্ড পলিসি</a></li>
+                        <li><a href="privacy.html#terms" data-bn="শর্তাবলী" data-en="Terms & Conditions">শর্তাবলী</a></li>
                     </ul>
                 </div>
                 <div class="footer-links">
-                    <h4>Support</h4>
+                    <h4 data-bn="সাপোর্ট" data-en="Support">সাপোর্ট</h4>
                     <ul class="support-list">
                         <li><a href="tel:+8801324214516"><i class="fas fa-phone"></i> +8801324214516</a></li>
-                        <li class="small-text">WhatsApp Message Only</li>
-                        <li><a href="mailto:your@email.com"><i class="fas fa-envelope"></i> your@email.com</a></li>
-                        <li><a href="#"><i class="fab fa-whatsapp"></i> WhatsApp Chat</a></li>
-                        <li class="small-text">Sat – Thu · 10am – 10pm</li>
+                        <li class="small-text" data-bn="শুধুমাত্র হোয়াটসঅ্যাপ মেসেজ" data-en="WhatsApp Message Only">শুধুমাত্র হোয়াটসঅ্যাপ মেসেজ</li>
+                        <li><a href="mailto:jiniskinibd@gmail.com"><i class="fas fa-envelope"></i> jiniskinibd@gmail.com</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
                 <div class="payment-methods">
-                    <p>We Accept</p>
+                    <p data-bn="আমরা গ্রহণ করি" data-en="We Accept">আমরা গ্রহণ করি</p>
                     <div class="payment-icons">
-                        <i class="fab fa-cc-visa"></i><i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
                         <span class="payment-local">bKash</span>
                         <span class="payment-local">Nagad</span>
                         <span class="payment-local">Rocket</span>
                     </div>
                 </div>
-                <p class="copyright">&copy; 2026 Jinis Kini. All rights reserved</p>
+                <p class="copyright" data-bn="&copy; ২০২৬ জিনিস কিনি। সর্বস্বত্ব সংরক্ষিত" data-en="&copy; 2026 Jinis Kini. All rights reserved">&copy; ২০২৬ জিনিস কিনি। সর্বস্বত্ব সংরক্ষিত</p>
                 <div class="social-links">
                     <a href="#"><i class="fab fa-facebook"></i></a>
                     <a href="#"><i class="fab fa-whatsapp"></i></a>
@@ -130,7 +157,7 @@
     <button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
 
     <script>
-        const SHEET_API = 'https://sheetdb.io/api/v1/n2j17tqzv1a23'; // ← আপনার API URL
+        const SHEET_API = 'https://sheetdb.io/api/v1/n2j17tqzv1a23'; 
         let allProducts = [];
         let currentFilter = 'all';
 
@@ -147,38 +174,100 @@
             document.getElementById('backToTop').style.display = window.scrollY > 300 ? 'flex' : 'none';
         });
 
+        // ═════ NATIVE LANGUAGE SWITCHER ═════
+        function setLanguage(lang) {
+            localStorage.setItem('jinis_lang', lang);
+            document.documentElement.lang = lang;
+            
+            const enOpt = document.querySelector('.en-opt');
+            const bnOpt = document.querySelector('.bn-opt');
+            
+            if (enOpt && bnOpt) {
+                if (lang === 'bn') {
+                    bnOpt.classList.add('active');
+                    enOpt.classList.remove('active');
+                } else {
+                    enOpt.classList.add('active');
+                    bnOpt.classList.remove('active');
+                }
+            }
+
+            document.querySelectorAll('[data-bn]').forEach(el => {
+                if (lang === 'bn' && el.dataset.bn) {
+                    el.innerHTML = el.dataset.bn;
+                } else if (lang === 'en' && el.dataset.en) {
+                    el.innerHTML = el.dataset.en;
+                }
+            });
+
+            // Update Search Placeholder
+            const searchInput = document.getElementById('searchInput');
+            if(searchInput) {
+                searchInput.placeholder = lang === 'bn' ? 'সার্চ করুন...' : 'Search products...';
+            }
+
+            if (allProducts.length > 0) {
+                filterProducts(currentFilter);
+            }
+        }
+
+        function toggleLanguage() {
+            const currentLang = localStorage.getItem('jinis_lang') || 'bn';
+            const newLang = currentLang === 'bn' ? 'en' : 'bn';
+            setLanguage(newLang);
+        }
+
         async function loadProducts() {
             try {
                 const res = await fetch(SHEET_API);
                 allProducts = await res.json();
             } catch(e) {
-                allProducts = getSampleProducts();
+                console.log("API Fetch Failed");
             }
             
-            // Build filter buttons
-            const cats = [...new Set(allProducts.map(p => p.category))];
-            const filterBar = document.getElementById('filterBar');
-            cats.forEach(cat => {
-                filterBar.innerHTML += `<button class="filter-btn" onclick="filterProducts('${cat}')">${cat}</button>`;
-            });
-            
-            // Check URL param for category
             const urlParams = new URLSearchParams(window.location.search);
             const catParam = urlParams.get('cat');
             if (catParam) {
                 filterProducts(catParam);
             } else {
+                filterProducts('all');
+            }
+        }
+
+        function filterProducts(category) {
+            currentFilter = category;
+            
+            // Update active class on static filter buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if(btn.getAttribute('data-filter') === category) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            if (category === 'all') {
                 renderProducts(allProducts);
+            } else {
+                renderProducts(allProducts.filter(p => p.category && p.category.trim().toLowerCase() === category.toLowerCase()));
             }
         }
 
         function renderProducts(products) {
             const grid = document.getElementById('productGrid');
             grid.innerHTML = '';
+            
+            const currentLang = localStorage.getItem('jinis_lang') || 'bn';
+            const noResultText = currentLang === 'bn' ? 'কোনো প্রোডাক্ট পাওয়া যায়নি' : 'No products found';
+            const salesText = currentLang === 'bn' ? 'বিক্রি হয়েছে' : 'Sales';
+            const btnText = currentLang === 'bn' ? 'প্ল্যান দেখুন' : 'View Plans';
+            const moText = currentLang === 'bn' ? '/মাস' : '/mo';
+
             if (products.length === 0) {
-                grid.innerHTML = '<div class="no-results"><i class="fas fa-search"></i>No products found</div>';
+                grid.innerHTML = `<div class="no-results"><i class="fas fa-search"></i>${noResultText}</div>`;
                 return;
             }
+
             products.forEach(p => {
                 const badgeClass = p.badge || 'primary';
                 const img = p.image || p.image_url || `https://placehold.co/300x300/1e1b4b/7c3aed?text=${encodeURIComponent(p.name.substring(0,10))}`;
@@ -190,27 +279,22 @@
                         </div>
                         <div class="product-info">
                             <span class="product-category">${p.category || 'Digital'}</span>
-                            <h3>${p.name}</h3>
-                            ${p.sales_count ? `<p class="sales-count"><i class="fas fa-shopping-cart"></i> ${p.sales_count}+ Sales</p>` : ''}
+                            <h3 style="margin-bottom: ${p.sales_count ? '6px' : '10px'}">${p.name}</h3>
+                            ${p.sales_count ? `<p class="sales-count"><i class="fas fa-shopping-cart"></i> ${p.sales_count}+ ${salesText}</p>` : ''}
+                            
+                            ${p.recommendation ? `<div style="font-size: 11px; color: #22c55e; font-weight: 700; margin-bottom: 8px;"><i class="fas fa-thumbs-up" style="margin-right:4px;"></i> ${p.recommendation}</div>` : ''}
+
                             <div class="product-pricing">
-                                <span class="sale-price">৳${Number(p.sale_price).toLocaleString()}<span class="period">/mo</span></span>
+                                <span class="sale-price">৳${Number(p.sale_price).toLocaleString()}<span class="period">${moText}</span></span>
                                 ${p.original_price ? `<span class="original-price">৳${Number(p.original_price).toLocaleString()}</span>` : ''}
                             </div>
                             <button class="btn-view" onclick="event.stopPropagation();window.location.href='product.html?id=${p.id || p.slug || p.name}'">
-                                View Plans <i class="fas fa-arrow-right"></i>
+                                ${btnText} <i class="fas fa-arrow-right"></i>
                             </button>
                         </div>
                     </div>
                 `;
             });
-        }
-
-        function filterProducts(category) {
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            event.target.classList.add('active');
-            currentFilter = category;
-            if (category === 'all') renderProducts(allProducts);
-            else renderProducts(allProducts.filter(p => p.category === category));
         }
 
         function searchProducts() {
@@ -222,16 +306,11 @@
             renderProducts(filtered);
         }
 
-        function getSampleProducts() {
-            return [
-                { id:"adobe-cc", name:"Adobe Creative Cloud Pro", category:"Adobe", sale_price:"5299", original_price:"42500", discount_percent:"88%", sales_count:"1680", image:"https://placehold.co/300x300/1e1b4b/7c3aed?text=Adobe+CC", badge:"flagship" },
-                { id:"canva-pro", name:"Canva Pro", category:"Creative & Design", sale_price:"99", original_price:"1200", discount_percent:"92%", sales_count:"3061", image:"https://placehold.co/300x300/1e1b4b/d97706?text=Canva+Pro", badge:"popular" },
-                { id:"chatgpt", name:"ChatGPT Plus", category:"AI Tools", sale_price:"299", original_price:"400", discount_percent:"25%", sales_count:"186", image:"https://placehold.co/300x300/1e1b4b/dc2626?text=ChatGPT", badge:"hot" },
-                { id:"netflix", name:"Netflix Premium", category:"Streaming & Entertainment", sale_price:"960", original_price:"1560", discount_percent:"38%", sales_count:"991", image:"https://placehold.co/300x300/1e1b4b/2563eb?text=Netflix", badge:"popular" }
-            ];
-        }
-
-        document.addEventListener('DOMContentLoaded', loadProducts);
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('jinis_lang') || 'bn';
+            setLanguage(savedLang);
+            loadProducts();
+        });
     </script>
 </body>
 </html>
