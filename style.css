@@ -2415,6 +2415,17 @@ body::after {
 /* মোবাইল ভার্সনের জন্য একটু ছোট রাখা ভালো */
 @media (max-width: 768px) {
     .nav-brand-logo {
-        height: 45px;
+        height: 65px; /* এই মানটি বাড়িয়ে বা কমিয়ে আপনার পছন্দমতো সাইজ করে নিন */
     }
+}
+.skeleton {
+    background: linear-gradient(90deg, var(--bg-secondary) 25%, var(--bg-card) 50%, var(--bg-secondary) 75%);
+    background-size: 200% 100%;
+    animation: skeletonLoading 1.5s infinite;
+    border-radius: var(--radius-sm);
+}
+
+@keyframes skeletonLoading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
 }
